@@ -1,0 +1,277 @@
+<!--position from top-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BUY BEST BUY</title>
+    <meta charset="utf-8"/>
+    <!-- <link href="reset.css" type="text/css" rel="stylesheet"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Miriam+Libre:400,700" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="flickity.css" media="screen"> -->
+    <!-- <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css"> -->
+    <!-- <link href="style.css" type="text/css" rel="stylesheet"> -->
+    <!-- <link href="min.style.css" type="text/css" rel="stylesheet"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script> -->
+    <script src="/js/index.min.js" type="text/javascript"></script>
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <!-- <script src="js/owl.carousel.min.js"></script> -->
+    <!-- <script src="flickity.pkgd.js" type="text/javascript"></script>
+    <script src="main.js" type="text/javascript"></script>
+    <script src="js/App.js" type="text/javascript"></script>
+    <script src="js/index.js" type="text/javascript"></script>
+    <script src="js/Cart.js" type="text/javascript"></script>
+    <script src="../model/BBservice.js" type="text/javascript"></script> -->
+
+
+
+
+</head>
+<body>
+<container class="flex flex-col font-size-mobile font-size-desktop font-size-tablet">
+
+<!-- TOP NAVIGATION BAR IS NEXT-->
+
+  <header class="flex flex-col-mobile">
+
+    <div class="flex flex-just-between bottom-border-gray top-nav display-none-tablet display-none-desktop">
+      <img src="aloha-logo.svg" class="image-logo">
+      <div>
+        <div class="background-shopping image-logo">
+        <img src="./images/cart-icon.svg" class="image-shopping">
+        <span class="red-icon-count text-white padding-small">12</span>
+      </div>
+      </div>
+
+    <ul class="flex flex-just-around bottom-border-gray space-top-nav padding display-none-tablet display-none-desktop">
+        <li><a class="text-top-nav" href="#about"> about </a></li>
+        <li><a class="text-top-nav" href="#shop"> shop </a></li>
+        <li><a class="text-top-nav" href="#featured"> featured </a></li>
+        <li><a class="text-top-nav" href="#updates"> updates </a></li>
+    </ul>
+
+      </div>
+
+      <div class="flex flex-just-between top-nav display-none-mobile">
+          <img src="../images/aloha-logo.svg" class="image-logo ">
+
+          <div class="flex flex-just-center">
+              <ul class="flex flex-just-between navigation-desktop navigation-tablet">
+                <li><a class="text-top-nav display-block" href="#about"> about </a></li>
+                <li><a class="text-top-nav display-block" href="#shop"> shop </a></li>
+                <li><a class="text-top-nav display-block" href="#featured"> featured </a></li>
+                <li><a class="text-top-nav display-block" href="#updates"> updates </a></li>
+              </ul>
+          </div>
+
+          <div>
+            <div class="background-shopping image-logo">
+            <!-- <img src="../images/cart-icon.svg" class="image-shopping"> -->
+            <span class="red-icon-count text-white padding-small">12</span>
+          </div>
+          </div>
+        </div>
+  </header>
+<!-- quick view and shopping cart are next -->
+<section class="load flex flex-align-items-center flex-just-center">
+  <div class="quick-view flex flex-col padding">
+    <div class="flex">
+      <div><img src="http://i.ebayimg.com/00/s/NjQ4WDc0MQ==/z/ZOQAAOxygLxSYTnK/$(KGrHqN,!rEFJ!3W0ZH0BSYTnJs6+w~~60_35.JPG?set_id=880000500F"></div>
+      <div class="flex flex-col">price
+    <button type="button" class="green-button text-white">click here</button>
+      </div>
+    </div>
+    <p class="text-top">About this very pretty paperweight</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin porta scelerisque. Duis placerat quam ut est auctor, ac posuere felis auctor. Maecenas congue ultrices ultrices. Proin in laoreet sem. Sed dictum lacinia urna pulvinar tincidunt. Aenean porta blandit interdum. Donec aliquam risus eu lorem vehicula dictum. Sed in quam urna. Proin vel quam sem. Integer eget sem non tortor blandit euismod varius nec felis. Nam scelerisque sem urna, eu vestibulum velit porttitor eu. Sed faucibus rhoncus ipsum, non faucibus erat faucibus et. Duis maximus dolor tortor, non mattis massa convallis ut.
+    </p>
+  </div>
+</section>
+<section class="load flex flex-align-items-center flex-just-center">
+  <div class="your-cart flex flex-col padding">
+    <h1 class="padding text-align-center">YOUR CART</h1>
+    <div class="flex">
+      <img src="" alt="laptop image" class="padding">
+      <p class="padding">NAME OF LAPTOP</p>
+      <h2 class="padding">$price</h2>
+      <p class="padding">quantity</p>
+        <div class="flex flex-col">
+            <button type="button" id="update-button" class="white-button text-white padding">update</button>
+            <button type="button" id="remove-button" class="gray-button text-white padding">remove</button>
+        </div>
+    </div>
+    <div class="flex">
+      <img src="" alt="laptop image" class="padding">
+      <p class="padding">NAME OF LAPTOP</p>
+      <h2 class="padding">$price</h2>
+      <p class="padding">quantity</p>
+      <div class="flex flex-col">
+          <button type="button" id="update-button" class="white-button text-white padding">update</button>
+          <button type="button" id="remove-button" class="gray-button text-white padding">remove</button>
+      </div>
+    </div>
+    <button type="button" id="checkout-button" class="green-button text-white align-self-flex-end padding">checkout</button>
+  </div>
+</section>
+
+<!-- start of content below header nav -->
+
+<section class="top-margin-mobile top-margin-tablet top-margin-desktop">
+
+<!-- SEASON BANNER IMAGE IS NEXT -->
+
+  <section class="background-image-season flex flex-col z-index flex-align-center flex-just-center">
+    <div class="width-60 flex-col padding align-self-center">
+      <div class="text-top text-white display-block"><p>want to buy</p><p><b>cool shit from best buy?</b></p></div>
+      <button type="button" class="white-button text-white">click here</button>
+    </div>
+  </section>
+
+<!-- ABOUT SECTION IS NEXT-->
+
+  <section class="border-gray flex flex-col flex-align-center padding" id="about">
+    <div class="flex flex-just-center   padding-bottom">
+      <p class="text-top text-align-center text-black font-spacing">Have you ever wanted to <b>buy something?</b></p>
+    </div>
+    <p class="text-blurb text-align-center text-black  ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris massa ligula, blandit vitae tellus venenatis, varius interdum leo. Sed viverra, tortor vitae sodales fringilla, ligula tellus elementum odio, egestas auctor nisi tortor et orci. Etiam dapibus turpis ut efficitur posuere. Phasellus consequat enim nisi, nec maximus purus hendrerit ornare.
+    </p>
+  </section>
+<!--  SHOPPING GRID IS NEXT -->
+
+<section class="flex flex-col" id="shop">
+
+<section class="flex row-width-100 flex-wrap-mobile flex-col-mobile">
+        <div class="flex flex-col flex-just-center  flex-5-desktop flex-5-tablet large-box image-cat-cell box-margin text-align-center">
+          <p class="text-white display-block font-size">CELL PHONES</p>
+        </div>
+        <div class="flex  flex-5-desktop flex-5-tablet">
+            <div class="small-box image-cat-desktop box-margin text-align-center flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-2-mobile">
+              <p class="text-white display-block font-size">DESKTOPS</p>
+            </div>
+            <div class="small-box image-cat-homeaudio box-margin text-align-center flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-2-mobile">
+              <p class="text-white display-block font-size">HOME AUDIO</p>
+            </div>
+        </div>
+</section>
+<section class="flex row-width-100 flex-wrap-mobile flex-col-mobile">
+
+        <div class=" flex  flex-5-desktop flex-5-tablet flex-1-mobile ">
+            <div class="image-cat-tablet small-box cat-tablet text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-1-mobile">
+              <p class="text-white display-block font-size">TABLETS</p>
+            </div>
+            <div class="image-cat-tv small-box text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-1-mobile">
+              <p class="text-white display-block font-size">4K TVs</p>
+            </div>
+        </div>
+        <div class="large-box image-cat-laptop text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-grow-1-mobile  ">
+          <p class="text-white display-block font-size">LAPTOPS/ULTRABOOKS</p>
+        </div>
+</section>
+
+
+</section>
+
+
+<!-- SLIDER CAROUSEL NEXT-->
+
+<section class="flex flex-col flex-align-center padding">
+  <div class="flex flex-col text-align-center flex-just-center padding-bottom" id="featured">
+    <p class="text-top text-black">You like stuff?</p>
+    <p class="text-sub text-black">We got stuff.</p>
+  </div>
+  <div id="clone">
+    <div class="carousel-cell">
+        <img>
+        <h3></h3>
+        <h1></h1>
+        <h2></h2>
+        <button type="button" class="white-button ">quick view</button>
+        <button type="button" class="green-button text-white">add to cart</button>
+
+      </div>
+
+  </div>
+
+  <div class="main-carousel" id="appendHere">
+
+      <!-- <div class="carousel-cell">
+        <div>
+            <h2>HIIIII</h2>
+          </div>
+      </div> -->
+  </div>
+
+
+    </section>
+
+</section>
+
+<div>
+  <div class="background-shopping image-logo">
+  <!-- <img src="../images/cart-icon.svg" class="image-shopping"> -->
+  <span class="red-icon-count text-white padding-small">12</span>
+</div>
+</div>
+
+
+<!-- UPDATES SECTION IS NEXT-->
+
+  <section class="flex flex-col background-image-updates padding" id="updates">
+   <div class="flex flex-col text-align-center flex-just-center   padding-bottom">
+      <p class="text-top text-white  ">Want to get constant updates?</p>
+      <p class="text-sub text-white  "> Give us your email and we won't stop emailing you</p>
+   </div>
+
+<!-- EMAIL FORM IS NEXT-->
+
+    <form name="form1" class="flex flex-just-between">
+        <input type="text" name="yourEmail" value="Your Email" class="email text-email text-gray">
+        <input type="submit" value="Subscribe" onclick="ValidateEmail(document.form1.yourEmail)" class="green-button text-white text-button">
+    </form>
+  </section>
+
+<!-- FOOTER SECTION IS NEXT-->
+
+  <footer class="border-white padding flex flex-col-mobile flex-row-tablet flex-just-center-mobile">
+
+    <section class="text-footer width50-tablet flex-grow-tablet">
+
+      <p class="text-white text-footer text-align-center-mobile padding-bottom">c 2016 Aloha Apparel Co.
+      <br>Powered by HTML and CSS.</br></p>
+
+      <p class="text-white text-footer text-align-center-mobile padding-bottom">604-604-6040. info@alohaapparel.com</p>
+
+      <p class="text-white text-footer text-align-center-mobile text-gray padding-bottom">1490 W Broadway
+      Vancouver, BC., Canada
+      </p>
+    </section>
+
+<!-- SOCIAL MEDIA BUTTONS ARE NEXT-->
+
+      <section class="padding-bottom flex flex-row-tablet">
+        <div class="flex flex-just-center flex-col-tablet flex-grow-1-mobile">
+          <p class="icon-padding text-footer"><a href="https://www.facebook.com/"<span class="fa fa-facebook" aria-hidden="true"></span> </a></p>
+          <p class="icon-padding text-footer"><a href="https://www.twitter.com/"<span class="fa fa-twitter" aria-hidden="true"></span></a></p>
+          <p class="icon-padding text-footer"><a href="https://www.instagram.com/"<span class="fa fa-instagram" aria-hidden="true"></span></a></p>
+          <p class="icon-padding text-footer"><a href="https://www.pinterest.com/"<span class="fa fa-pinterest" aria-hidden="true"></span></a></p>
+          <p class="icon-padding text-footer"><a href="https://www.google.com/"<span class="fa fa-google-plus" aria-hidden="true"></span></a></p>
+        </div>
+
+        <div class="display-none-mobile social-names-width">
+          <p class="icon-padding text-white text-footer">facebook</p>
+          <p class="icon-padding text-white text-footer">twitter</p>
+          <p class="icon-padding text-white text-footer">instagram</p>
+          <p class="icon-padding text-white text-footer">pinterest</p>
+          <p class="icon-padding text-white text-footer">google+</p>
+        </div>
+        <!--names for desktop in div, col-->
+      </section>
+
+  </footer>
+
+</section>
+</container>
+
+
+</body>
+</html>
