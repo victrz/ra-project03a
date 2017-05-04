@@ -16,3 +16,10 @@ import App from './App';
 let app = new App();
 console.log(app);
 console.log("reading index.js complete...");
+
+
+// let onReady =  (e) => {
+//     let app = new App();
+// };
+//
+// window.addEventListener("load",onReady,false);
