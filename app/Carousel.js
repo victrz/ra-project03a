@@ -1,3 +1,6 @@
+//import app
+//import carouselview
+
 export default class Carousel{
 constructor(){
   console.log("from carousel.js")

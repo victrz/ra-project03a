@@ -12,25 +12,27 @@ import QuickView from './QuickView';
 export default class App {
     constructor()
     {
-        console.log("from app.js");
-        this.productList = new AllProducts();
-        this.product = new Product();
-        this.bbService = new BestBuyService(this);
-        //console.log(this.productList)
-        this.cart = new Cart(this);
-        this.cartView = new CartView(this);
-        this.carousel = new Carousel();
-        this.carouselView = new CarouselView(this);
-        this.quickView = new QuickView();
-        console.log(this.productList);
-        console.log("Hello World from the App");
-        debugger;
-      //  this.initApp();
+        // this.productList = new AllProducts();
+        //this.product = new Product();
+        this.carouselView = new CarouselView();
+        this.bbService = new BestBuyService();
+        this.allProducts = null;
+
+      }
+
+    init(){
+      console.log("###########");
+      this.bbService.init(this);
     }
-//
-// initApp(){
-//   this.bbService.getProductData(this);
-// populate carousel function (this.AllProducts)
-// }
+
+    iHazData(theData){
+      console.log("++++++++++++++++++++++++++++");
+      console.log(theData);
+      console.log("I got called.");
+      console.log(theData.productList[1]);
+      this.allProducts = theData;
+      console.log(this.allProducts.productList);
+      this.carouselView.init(this.allProducts.productList);
+    }
 
 }

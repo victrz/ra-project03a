@@ -1,3 +1,6 @@
+export default class Flickity{
+constructor(){}
+
 /*!
  * Flickity PACKAGED v2.0.5
  * Touch, responsive, flickable carousels
@@ -17,7 +20,7 @@
 
 /* jshint browser: true, strict: true, undef: true, unused: true */
 
-( function( window, factory ) {
+function( window, factory ) {
   // universal module definition
   /*jshint strict: false */ /* globals define, module, require */
   if ( typeof define == 'function' && define.amd ) {
@@ -39,7 +42,7 @@
     );
   }
 
-}( window, function factory( window, jQuery ) {
+} window, function factory( window, jQuery ) {
 'use strict';
 
 // ----- utils ----- //
@@ -4637,3 +4640,4 @@ proto.imagesLoaded = function() {
 return Flickity;
 
 }));
+}

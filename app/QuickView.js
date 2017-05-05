@@ -2,6 +2,10 @@ export default class QuickView{
 constructor(){
   console.log("from quickview.js")
 }
+onClickOpenQV(e){
+  let currentSku = e.target.getAttribute("data-sku");
+  //loop to find corresponding item to currentSku, render quickview popup 
+}
 }
 //showView(sku) function
 //quickview button
