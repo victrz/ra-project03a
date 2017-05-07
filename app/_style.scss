@@ -297,12 +297,13 @@ footer{
   z-index:3000;
   background-color: white;
   height: auto;
-
   width: 60%;
   display: none;
 }
-.your-cart{
+#your-cart{
   position:fixed;
+  top: 150px;
+  left: 300px;
   z-index:3000;
   background-color: white;
   height: auto;

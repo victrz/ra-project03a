@@ -1,60 +1,65 @@
-//Cart view
-//createElement
-//appendChild
-// import App from './App';
 
+import AllProducts from './AllProducts';
 export default class CartView {
-    constructor(){
+    constructor(allProducts){
+      this.allProducts = allProducts;
     }
-
-    onClickOpenCart(e){
-      console.log("MAKING A CART");
-    }
-
-
-// createCartIcon(){
-//   let newCartIcon = document.createElement("div");
-//   document.getElementById("numItemsParagraph").addEventListener("click", this.onClickOpenCart, false);
-// }
-    //this.cart.onClickOpenCart();
-
-    //document.getElementById("numItemsParagraph").addEventListener("click",this.onClickOpenCart,false);
-
-
-    // matchProductToSku(sku){
-    //   let allTheProducts = this.app.allProducts.productList;
+    // holdProductsHere(products){
+    //   let allTheProducts = products;
     //   console.log(allTheProducts);
-    //   console.log("HEY THERE WE GO");
-    //   console.log(this.cart.ss);
-    //   // for (let z=0; z<this.cart.ss.length; z++){
-    //   //   this.cart.ss[z].sku
-    //   // }
-    //   //
-    //   //
-    //   // for (let y=0; y<allTheProducts.length; y++){
-    //   //         if (sku == allTheProducts[y].sku){
-    //   //           let itemSku = allTheProducts[y].sku;
-    //   //           let itemImage = allTheProducts[y].image;
-    //   //           let itemPrice = allTheProducts[y].salePrice;
-    //   //           let itemName = allTheProducts[y].name;
-    //   //           let itemManufacturer = allTheProducts[y].manufacturer;
-    //   //           this.createQV(itemSku, itemImage, itemPrice, itemName, itemManufacturer);
-    //   //         }
-    //   // };
+    //   console.log("HOLDING PRODUCTS");
+    //   //return allTheProducts;
+    //   //this function is holding the product list, passed from App
     // }
 
-
+    onClickOpenCart(e){
+      //need to get the product list in here to run loops
+      console.log("MAKING A CART");
+      console.log(this);
+      let products =this.this;
+      document.getElementById("load-cart").style.display = "block";
+      document.getElementById("your-cart").style.display= "block";
+      // for (let z=0; z<ss.length; z++){
+      //   for (let y=0; y<allTheProducts.length; y++){
+      //     if (ss.key(z) == products[y].sku){
+      //     let itemSku = allTheProducts[y].sku;
+      //     let itemImage = allTheProducts[y].image;
+      //     let itemPrice = allTheProducts[y].salePrice;
+      //     let itemName = allTheProducts[y].name;
+      //     let itemManufacturer = allTheProducts[y].manufacturer;
+      //     let itemQty = ss.getItem(itemSku);
+      //     this.createItem(itemSku, itemImage, itemPrice, itemName, itemManufacturer, itemQty);
+      //     }
+      //   }
+      // }
     }
+    createItem(itemSku, itemImage, itemPrice, itemName, itemManufacturer, itemQty){
+    }
+}
 
-// createCartCountIcon(){
-//   let newCartIcon = document.createElement("p");
-//   newCartIcon.setAttribute("Id","numItemsParagraph");
-//   newCartIcon.style.border = "1px solid black";
-//   //document.cartviewdiv.appendChild(newCartIcon);
-//   newCartIcon.addEventListener("click",this.onClickLoadCartView,false);
-//   document.getElementById("cartviewdiv").appendChild(newCartIcon);
-// onClickLoadCartView(){
-//
-// }
-// //on clicking on shopping cart icon, show shopping cart
-// }
+// <section id="load-cart" class="flex flex-align-items-center flex-just-center">
+//   <div id="your-cart" class="flex flex-col padding">
+//     <h1 class="padding text-align-center">YOUR CART</h1>
+//     <div class="flex">
+//       <img src="" alt="laptop image" class="padding">
+//       <p class="padding">NAME OF LAPTOP</p>
+//       <h2 class="padding">$price</h2>
+//       <p class="padding">quantity</p>
+//         <div class="flex flex-col">
+//             <button type="button" id="update-button" class="white-button text-white padding">update</button>
+//             <button type="button" id="remove-button" class="gray-button text-white padding">remove</button>
+//         </div>
+//     </div>
+//     <div class="flex">
+//       <img src="" alt="laptop image" class="padding">
+//       <p class="padding">NAME OF LAPTOP</p>
+//       <h2 class="padding">$price</h2>
+//       <p class="padding">quantity</p>
+//       <div class="flex flex-col">
+//           <button type="button" id="update-button" class="white-button text-white padding">update</button>
+//           <button type="button" id="remove-button" class="gray-button text-white padding">remove</button>
+//       </div>
+//     </div>
+//     <button type="button" id="checkout-button" class="green-button text-white align-self-flex-end padding">checkout</button>
+//   </div>
+// </section>

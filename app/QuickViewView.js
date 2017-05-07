@@ -1,6 +1,4 @@
 import App from './App';
-
-
 export default class QuickViewView{
   constructor(app){
     this.app=app;

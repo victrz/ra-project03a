@@ -8,6 +8,7 @@ export default class CarouselView{
 
     init(allProducts){
     this.initFlickityElements(allProducts);
+    console.log("IN INIT");
     }
     initFlickityElements(x){
         let documentFragment = new DocumentFragment();

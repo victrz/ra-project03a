@@ -15,14 +15,14 @@ export default class App {
     constructor()
     {
         //this.product = new Product();
-        this.cartView = new CartView();
+        this.allProducts = null;
+        this.cartView = new CartView(this.allProducts);
         this.cart = new Cart(this.cartView, this);
         this.quickViewView = new QuickViewView(this);
         this.quickView = new QuickView(this.quickViewView);
         this.carousel = new Carousel(this.cart, this.quickView)
         this.carouselView = new CarouselView(this.carousel);
         this.bbService = new BestBuyService();
-        this.allProducts = null;
 
 
       }
@@ -39,6 +39,7 @@ export default class App {
       this.allProducts = theData;
       console.log(this.allProducts.productList);
       this.carouselView.init(this.allProducts.productList);
+      // this.cartView.holdProductsHere(this.allProducts.productList);
     }
 
 }
