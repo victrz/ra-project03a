@@ -54,7 +54,7 @@
       </div>
 
       <div class="flex flex-just-between top-nav display-none-mobile">
-          <img src="../images/aloha-logo.svg" class="image-logo ">
+          <!-- <img src="../images/aloha-logo.svg" class="image-logo "> -->
 
           <div class="flex flex-just-center">
               <ul class="flex flex-just-between navigation-desktop navigation-tablet">
@@ -68,26 +68,29 @@
           <div>
             <div class="background-shopping image-logo">
             <!-- <img src="../images/cart-icon.svg" class="image-shopping"> -->
-            <span class="red-icon-count text-white padding-small">12</span>
+            <!-- <div class="red-icon-count text-white padding-small">12</div> -->
           </div>
           </div>
         </div>
   </header>
 <!-- quick view and shopping cart are next -->
-<section class="load flex flex-align-items-center flex-just-center">
-  <div class="quick-view flex flex-col padding">
+<section id="load-qv" class="flex flex-align-items-center flex-just-center">
+  <div id="quick-view" class="flex flex-col padding">
     <div class="flex">
-      <div><img src="http://i.ebayimg.com/00/s/NjQ4WDc0MQ==/z/ZOQAAOxygLxSYTnK/$(KGrHqN,!rEFJ!3W0ZH0BSYTnJs6+w~~60_35.JPG?set_id=880000500F"></div>
-      <div class="flex flex-col">price
-    <button type="button" class="green-button text-white">click here</button>
+      <p id="close-qv"></p>
+      <img id="image-qv">
+      <p id="price-qv"></p>
+      <p id="name-qv"></p>
+      <div id="button-qv"></div>
+    <!-- <button type="button" class="green-button text-white">click here</button> -->
       </div>
+      <p class="text-top">About this very pretty paperweight</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin porta scelerisque. Duis placerat quam ut est auctor, ac posuere felis auctor. Maecenas congue ultrices ultrices. Proin in laoreet sem. Sed dictum lacinia urna pulvinar tincidunt. Aenean porta blandit interdum. Donec aliquam risus eu lorem vehicula dictum. Sed in quam urna. Proin vel quam sem. Integer eget sem non tortor blandit euismod varius nec felis. Nam scelerisque sem urna, eu vestibulum velit porttitor eu. Sed faucibus rhoncus ipsum, non faucibus erat faucibus et. Duis maximus dolor tortor, non mattis massa convallis ut.
+      </p>
     </div>
-    <p class="text-top">About this very pretty paperweight</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin porta scelerisque. Duis placerat quam ut est auctor, ac posuere felis auctor. Maecenas congue ultrices ultrices. Proin in laoreet sem. Sed dictum lacinia urna pulvinar tincidunt. Aenean porta blandit interdum. Donec aliquam risus eu lorem vehicula dictum. Sed in quam urna. Proin vel quam sem. Integer eget sem non tortor blandit euismod varius nec felis. Nam scelerisque sem urna, eu vestibulum velit porttitor eu. Sed faucibus rhoncus ipsum, non faucibus erat faucibus et. Duis maximus dolor tortor, non mattis massa convallis ut.
-    </p>
-  </div>
+
 </section>
-<section class="load flex flex-align-items-center flex-just-center">
+<section id="load-cart" class="flex flex-align-items-center flex-just-center">
   <div class="your-cart flex flex-col padding">
     <h1 class="padding text-align-center">YOUR CART</h1>
     <div class="flex">
@@ -183,12 +186,13 @@
 
 </section>
 
-<div>
-  <div class="background-shopping image-logo">
+<div id="cartviewdiv">
+  <!-- <div class="background-shopping image-logo"> -->
   <!-- <img src="../images/cart-icon.svg" class="image-shopping"> -->
-  <p id="numItemsParagraph" class="red-icon-count text-white padding-small">12</p>
+    <p id="numItemsParagraph" class="red-icon-count text-white padding-small"></p>
+  <!-- </div> -->
 </div>
-</div>
+
 
 
 <!-- UPDATES SECTION IS NEXT-->

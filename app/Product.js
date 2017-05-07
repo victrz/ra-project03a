@@ -1,6 +1,5 @@
 export default class Product{
   constructor(){
-    console.log("in product.js")
     this.prodDescription= "";
     this.prodSKU= "";
     this.prodName= "";

@@ -1,35 +1,31 @@
-
+//import AllProducts from './AllProducts';
 //import Flickity from './flickity.pkgd';
-import AllProducts from './AllProducts';
-import App from './App';
-
-export default class CarouselView {
-    constructor(){
+import Carousel from './Carousel';
+export default class CarouselView{
+    constructor(carousel){
+      this.carousel = carousel;
     }
 
     init(allProducts){
     this.initFlickityElements(allProducts);
     }
     initFlickityElements(x){
-        console.log(x);
         let documentFragment = new DocumentFragment();
         let outerDiv = document.createElement("div");
         outerDiv.setAttribute("class","main-carousel");
         for (let i=0; i<x.length; i++){
             let eachCell = document.createElement("div");
             eachCell.setAttribute("class","carousel-cell");
-            // create cell content
             this.createCellContent(eachCell,x[i]);
             outerDiv.appendChild(eachCell);
         }
         this.createCarousel(outerDiv);
     }
-
     createCellContent(cellContainer,currentProduct){
-
         let cellBox = this.createInnerCellBox();
         let titleParagraph = this.createTitleParagraph(currentProduct);
         let titleManuf = this.createManuf(currentProduct);
+        let titlePrice = this.createProductPrice(currentProduct);
         cellBox.appendChild(titleManuf);
         cellBox.appendChild(document.createElement("br"));
         cellBox.appendChild(titleParagraph);
@@ -37,14 +33,15 @@ export default class CarouselView {
         let productImage = this.createProductImage(currentProduct);
         cellBox.appendChild(productImage);
         cellBox.appendChild(document.createElement("br"));
-        let productPrice = this.createProductPrice(currentProduct);
-        cellBox.appendChild(productPrice);
+        cellBox.appendChild(titlePrice);
         cellBox.appendChild(document.createElement("br"));
         let newCartButton = this.createCartButton(currentProduct);
         cellBox.appendChild(newCartButton);
         cellContainer.appendChild(cellBox);
+        let newQVButton = this.quickViewButton(currentProduct);
+        cellBox.appendChild(newQVButton);
+        cellContainer.appendChild(cellBox);
     }
-
     createProductImage(currentProduct){
         let newProductImage = document.createElement("img");
         newProductImage.src = `${currentProduct["image"]}`;
@@ -53,7 +50,6 @@ export default class CarouselView {
         newProductImage.setAttribute("alt",`${currentProduct["name"]}`);
         return newProductImage;
     }
-
     createInnerCellBox(){
         let newCellBox = document.createElement("div");
         newCellBox.style.backgroundColor = "#FFFFFF";
@@ -64,22 +60,19 @@ export default class CarouselView {
         return newCellBox;
     }
     createProductPrice(currentProduct){
-
         let newPrice= document.createElement("h3");
         newPrice.style.color = "#0000ff";
-        let newPriceContent = document.createTextNode(`$${currentProduct["SalePrice"]}`);
+        let newPriceContent = document.createTextNode(`$ ${currentProduct["salePrice"]}`);
         newPrice.appendChild(newPriceContent);
         return newPrice;
     }
     createTitleParagraph(currentProduct){
-
         let newTitle = document.createElement("p");
         newTitle.style.color = "#0000ff";
         let newTextContent = document.createTextNode(`${currentProduct["name"]}`);
         newTitle.appendChild(newTextContent);
         return newTitle;
     }
-
     createManuf(currentProduct){
 
         let newManuf = document.createElement("h2");
@@ -88,7 +81,6 @@ export default class CarouselView {
         newManuf.appendChild(newManufContent);
         return newManuf;
     }
-
     createCartButton(currentProduct){
         let newCartButton = document.createElement("button");
         newCartButton.setAttribute("data-sku",`${currentProduct["sku"]}`);
@@ -101,28 +93,22 @@ export default class CarouselView {
     }
     quickViewButton(currentProduct){
         let newQVButton = document.createElement("button");
-        newCartButton.setAttribute("data-sku",`${currentProduct["sku"]}`);
-        newCartButton.setAttribute("type","button");
-        newCartButton.setAttribute("Id",`${currentProduct["sku"]}`);
-        newCartButton.setAttribute("value",`${currentProduct["sku"]}`);
-        newCartButton.appendChild(document.createTextNode("Open QuickView"));
-        newCartButton.addEventListener("click",this.onClickOpenQV.bind(this),false);
+        newQVButton.setAttribute("data-sku",`${currentProduct["sku"]}`);
+        newQVButton.setAttribute("type","button");
+        newQVButton.setAttribute("Id",`${currentProduct["sku"]}`);
+        newQVButton.setAttribute("value",`${currentProduct["sku"]}`);
+        newQVButton.appendChild(document.createTextNode("Open QuickView"));
+        newQVButton.addEventListener("click",this.onClickOpenQV.bind(this),false);
         return newQVButton;
-        //function onClickOpenQV(e){} in QuickView.js
     }
-
     onClickAddToCart(e){
-        //console.log(e.target.getAttribute("data-sku"));
         let currentSku = e.target.getAttribute("data-sku");
-        //console.log(this);
-        //console.log(this.currentCart);
-        this.currentCart.addItemToCart(currentSku);
-        // move this function out into  class-level - done
-        // get the target,
-        // use setAttribute to read data-sku
-        // pass it over to ShoppingCart.js
+        this.carousel.passSkuToCart(currentSku);
     }
-
+    onClickOpenQV(e){
+      let currentSku = e.target.getAttribute("data-sku");
+      this.carousel.passSkuToQV(currentSku);
+    }
     createCarousel(node){
         // console.log(this.flickityElements);
         //window.addEventListener("load",(e) => {

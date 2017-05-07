@@ -56,7 +56,9 @@ h3{
 }
 .red-icon-count{
   background-color: green;
-  border-radius: 50%;
+  // border-radius: 50%;
+  width: 100px;
+  height: 100px;
 }
 .background-shopping{
   background-image: url("./images/cart-icon.svg");
@@ -268,7 +270,7 @@ footer{
   text-align: center;
   width: 350px;
 }
-.load{
+#load-cart{
   position: fixed;
   z-index: 2000;
   background-position: center;
@@ -278,11 +280,24 @@ footer{
   background-color: rgba(52,44,44,0.8);
   display: none;
 }
-.quick-view{
+#load-qv{
+  position: fixed;
+  z-index: 2000;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(52,44,44,0.8);
+  display: none;
+}
+#quick-view{
   position:fixed;
+  top: 150px;
+  left: 300px;
   z-index:3000;
   background-color: white;
   height: auto;
+
   width: 60%;
   display: none;
 }

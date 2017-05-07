@@ -1,10 +1,15 @@
-//import app
-//import carouselview
-
+import CarouselView from './CarouselView';
 export default class Carousel{
-constructor(){
-  console.log("from carousel.js")
-}
+  constructor(cart, quickView){
+    this.cart = cart;
+    this.quickView = quickView;
+  }
+  passSkuToCart(sku){
+  this.cart.addItemToCart(sku, 1);
+  }
+  passSkuToQV(sku){
+  this.quickView.receiveSku(sku);
+  }
 }
 //import Products from './AllProducts';
 
