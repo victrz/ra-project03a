@@ -1,6 +1,9 @@
-
+import CartView from './CartView';
+import App from './App';
 export default class Cart{
-constructor(){
+constructor(cartView, app){
+  this.cartView = cartView;
+  this.app = app;
   this.ss = window.sessionStorage;
 }
 
@@ -53,14 +56,7 @@ addItemToCart(sku,qty = 1){
 
 updateLittleCartIcon(qty){
   document.getElementById("numItemsParagraph").innerHTML = qty;
-  document.getElementById("numItemsParagraph").addEventListener("click", this.onClickOpenCart, false);
-}
-
-onClickOpenCart(e){
-
-
-
-
+  document.getElementById("numItemsParagraph").addEventListener("click", this.cartView.onClickOpenCart, false);
 }
 
 

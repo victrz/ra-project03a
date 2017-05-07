@@ -3,8 +3,8 @@ import AllProducts from './AllProducts';
 import BestBuyService from './BestBuyService';
 import Carousel from './Carousel';
 import CarouselView from './CarouselView';
-import Cart from './Cart';
 import CartView from './CartView';
+import Cart from './Cart';
 import Product from './Product';
 import QuickViewView from './QuickViewView';
 import QuickView from './QuickView';
@@ -15,8 +15,8 @@ export default class App {
     constructor()
     {
         //this.product = new Product();
-        this.cart = new Cart();
-        this.cartView = new CartView(this.cart, this);
+        this.cartView = new CartView();
+        this.cart = new Cart(this.cartView, this);
         this.quickViewView = new QuickViewView(this);
         this.quickView = new QuickView(this.quickViewView);
         this.carousel = new Carousel(this.cart, this.quickView)
