@@ -22,7 +22,7 @@ export default class QuickViewView{
   createQV(sku, image, price, name, manufacturer){
       document.getElementById("load-qv").style.display = "block";
       document.getElementById("quick-view").style.display= "block";
-      let closeQV = document.getElementById("close-qv").appendChild(document.createTextNode("close window"));
+      let closeCart = document.getElementById("close-qv").appendChild(document.createTextNode("close window"));
       document.getElementById("close-qv").addEventListener("click",this.onClickCloseQV,false);
       let imageQV = document.getElementById("image-qv").setAttribute("src", image);
       let priceQV = document.getElementById("price-qv").appendChild(document.createTextNode(price));
@@ -46,6 +46,7 @@ createCartButton(sku){
     document.getElementById("quick-view").style.display= "none";
   }
   onClickAddToCart(e){
+
       let currentSku = e.target.getAttribute("data-sku");
       this.app.cart.addItemToCart(currentSku, 1);
   }

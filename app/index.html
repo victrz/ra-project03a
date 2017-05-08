@@ -92,29 +92,22 @@
 </section>
 <section id="load-cart" class="flex flex-align-items-center flex-just-center">
   <div id="your-cart" class="flex flex-col padding">
-    <h1 class="padding text-align-center"></h1>
-    <div class="flex">
-      <img src="" alt="laptop image" class="padding">
-      <p class="padding">NAME OF LAPTOP</p>
-      <h2 class="padding">$price</h2>
-      <p class="padding">quantity</p>
-        <div class="flex flex-col">
+    <h1 class="padding text-align-center">Your Cart</h1>
+    <div id="each-cart-item" class="flex">
+      <p id="close-cart"></p>
+      <img id="image-cart" alt="laptop image" class="padding">
+      <p id = "name-cart" class="padding"></p>
+      <h2 id="price-cart" class="padding"></h2>
+      <p id="qty-cart" class="padding"></p>
+        <div id="cart-view-buttons" class="flex flex-col">
             <button type="button" id="update-button" class="white-button text-white padding">update</button>
             <button type="button" id="remove-button" class="gray-button text-white padding">remove</button>
         </div>
     </div>
-    <div class="flex">
-      <img src="" alt="laptop image" class="padding">
-      <p class="padding">NAME OF LAPTOP</p>
-      <h2 class="padding">$price</h2>
-      <p class="padding">quantity</p>
-      <div class="flex flex-col">
-          <button type="button" id="update-button" class="white-button text-white padding">update</button>
-          <button type="button" id="remove-button" class="gray-button text-white padding">remove</button>
-      </div>
-    </div>
     <button type="button" id="checkout-button" class="green-button text-white align-self-flex-end padding">checkout</button>
   </div>
+  <p id="empty-cart"></p>
+
 </section>
 
 <!-- start of content below header nav -->
