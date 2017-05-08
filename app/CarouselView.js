@@ -1,19 +1,24 @@
 //import AllProducts from './AllProducts';
 //import Flickity from './flickity.pkgd';
 import Carousel from './Carousel';
+//import Flickity from './Flickity';
 export default class CarouselView{
     constructor(carousel){
       this.carousel = carousel;
     }
-
     init(allProducts){
     this.initFlickityElements(allProducts);
-    console.log("IN INIT");
     }
     initFlickityElements(x){
         let documentFragment = new DocumentFragment();
         let outerDiv = document.createElement("div");
         outerDiv.setAttribute("class","main-carousel");
+        //outerDiv.setAttribute("data-flickity","{ "groupCells": true }");
+        //options
+        //cellAlign: "center;
+        //containt: true;
+        //
+
         for (let i=0; i<x.length; i++){
             let eachCell = document.createElement("div");
             eachCell.setAttribute("class","carousel-cell");
@@ -75,7 +80,6 @@ export default class CarouselView{
         return newTitle;
     }
     createManuf(currentProduct){
-
         let newManuf = document.createElement("h2");
         newManuf.style.color = "#0000ff";
         let newManufContent = document.createTextNode(`${currentProduct["manufacturer"]}`);
@@ -112,17 +116,16 @@ export default class CarouselView{
     }
     createCarousel(node){
         // console.log(this.flickityElements);
-        //window.addEventListener("load",(e) => {
+      //  window.addEventListener("load",(e) => {
             //console.log("page loaded...processing");
-            console.log(node);
             document.getElementById("carouselSection").appendChild(node);
-            let elem = document.querySelector('.main-carousel');
-            //let f = new Flickity( elem, {
-                // options
-              //  cellAlign: 'left',
-              //  contain: true
-            //});
-        //},false);
+        //     let elem = document.querySelector('.main-carousel');
+        //     let f = new Flickity( elem, {
+        //         options
+        //        cellAlign: 'left',
+        //        contain: true
+        //     });
+        // },false);
     }
 
 }
