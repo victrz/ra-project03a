@@ -29,13 +29,14 @@ export default class CartView {
       for (var z=0; z<ss.length; z++){
         let skuKey = ss.key(z);
         //next step: skuQty doesn't work.
-        let skuQty = ss.getItem(z);
+        //let skuQty = ss.getItem(skuKey);
+        //console.log(skuQty);
         //takes matched product and renders information in cart view:
         let match = findInSession(allTheProducts, skuKey);
-        this.cv.createItem(match.sku, match.image, match.salePrice, match.name, match.manufacturer, skuQty)
+        this.cv.createItem(match.sku, match.image, match.salePrice, match.name, match.manufacturer)
       }
     }
-      createItem(itemSku, itemImage, itemPrice, itemName, itemManufacturer, itemQty){
+      createItem(itemSku, itemImage, itemPrice, itemName, itemManufacturer){
         //creates a row in which each product in the cart is listed:
         let itemDiv = document.createElement("div");
         itemDiv.setAttribute("class","itemRow");
@@ -46,8 +47,8 @@ export default class CartView {
         itemDiv.appendChild(nameCart);
         let priceCart = this.createPrice(itemPrice);
         itemDiv.appendChild(priceCart);
-        let qtyCart = this.createQty(itemQty);
-        itemDiv.appendChild(qtyCart);
+        //let qtyCart = this.createQty(itemQty);
+        //itemDiv.appendChild(qtyCart);
         //creates a div to hold "update" and "remove" buttons:
         let buttonsDiv = document.createElement("div");
         buttonsDiv.setAttribute("id","cart-view-buttons");
