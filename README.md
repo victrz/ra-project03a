@@ -1,15 +1,12 @@
-# ra-webpack-es6-dev
-A repository for use to create ES6 projects using webpack, babel and related libraries
+This project uses the Best Buy API,
+creates a shopping site to view laptops from Best Buy
+interact with the product to view a quick view window for the selected product
+add items to a shopping cart, using session storage for the cart
 
-notes about this repo:
-
-the branch _video_player_sample_ contains an example of the the original HTML5/CSS3/ES5 video player refactored out and made into an ES6 standalone class. The JavaScript is transpiled using Babel.
-
-https://github.com/eapostol/ra-webpack-es6-dev/tree/video-player-sample
-
-
-
-The _master_ branch contains the original webpack - babel framework.
-
-https://github.com/eapostol/ra-webpack-es6-dev
-
+future functionality of the website:
+-render returned products in a flickity carousel
+-give the user ability to update quantities of items in their cart
+-remove an item from cart
+-update the cart
+-display cart total $
+-clear cart
