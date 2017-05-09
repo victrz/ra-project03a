@@ -19,12 +19,11 @@
   <header class="flex flex-col-mobile">
 
     <div class="flex flex-just-between bottom-border-gray top-nav display-none-tablet display-none-desktop">
-      <!-- <img src="aloha-logo.svg" class="image-logo"> -->
-      <div>
-        <div class="background-shopping image-logo">
-        <img src="./images/cart-icon.svg" class="image-shopping">
-        <span class="red-icon-count text-white padding-small">12</span>
-      </div>
+        <img src="./images/aloha-logo.svg" class="image-logo">
+        <div>
+          <img src="./images/cart-icon.svg" class="image-shopping">
+              <!-- <p id="numItemsParagraph" class="text-white padding-small"></p> -->
+        </div>
       </div>
 
     <ul class="flex flex-just-around bottom-border-gray space-top-nav padding display-none-tablet display-none-desktop">
@@ -37,7 +36,7 @@
       </div>
 
       <div class="flex flex-just-between top-nav display-none-mobile">
-          <img src="../images/aloha-logo.svg" class="image-logo ">
+          <img src="./images/aloha-logo.svg" class="image-logo ">
 
           <div class="flex flex-just-center">
               <ul class="flex flex-just-between navigation-desktop navigation-tablet">
@@ -48,11 +47,9 @@
               </ul>
           </div>
 
-          <div>
-            <!-- <div class="background-shopping image-logo"> -->
-            <img src="../images/cart-icon.svg" class="image-shopping">
-            <!-- <div class="red-icon-count text-white padding-small">12</div> -->
-          <!-- </div> -->
+          <div id="shopping-basket" class="flex flex-just-center">
+            <p id="numItemsParagraph" class="text-white"></p>
+            <img src="./images/cart-icon.svg" class="image-shopping">
           </div>
         </div>
   </header>
@@ -75,22 +72,11 @@
 </section>
 <section id="load-cart" class="flex flex-align-items-center flex-just-center">
   <div id="yourCart" class="flex flex-col padding">
-    <p id="close-cart"></p>
-    <!-- <h1 class="padding text-align-center">Your Cart</h1>
-    <div id="each-cart-item" class="flex">
-      <img id="image-cart" alt="laptop image" class="padding">
-      <p id = "name-cart" class="padding"></p>
-      <h2 id="price-cart" class="padding"></h2>
-      <p id="qty-cart" class="padding"></p> -->
-        <div id="cart-view-buttons" class="flex flex-col">
-            <!-- <button type="button" id="update-button" class="white-button text-white padding">update</button>
-            <button type="button" id="remove-button" class="gray-button text-white padding">remove</button> -->
-        </div>
-    </div>
-    <!-- <button type="button" id="checkout-button" class="green-button text-white align-self-flex-end padding">checkout</button> -->
+    <p id="close-cart">Close</p>
+    <button type="button" id="checkout-button" class="green-button text-white align-self-flex-end padding">checkout</button>
+    <p id="empty-cart">empty cart</p>
+    <h1 id="cart-title" class="padding text-align-center">Your Cart</h1>
   </div>
-  <p id="empty-cart"></p>
-
 </section>
 
 <!-- start of content below header nav -->
@@ -102,7 +88,7 @@
   <section class="background-image-season flex flex-col z-index flex-align-center flex-just-center">
     <div class="width-60 flex-col padding align-self-center">
       <div class="text-top text-white display-block"><p>want to buy</p><p><b>cool shit from best buy?</b></p></div>
-      <button type="button" class="white-button text-white">click here</button>
+      <a href="#carouselSection"><button type="button" class="white-button text-white">click here</button></a>
     </div>
   </section>
 
@@ -162,12 +148,11 @@
 
 </section>
 
-<div id="cartviewdiv">
-  <!-- <div class="background-shopping image-logo"> -->
-  <!-- <img src="../images/cart-icon.svg" class="image-shopping"> -->
-    <p id="numItemsParagraph" class="red-icon-count text-white padding-small"></p>
-  <!-- </div> -->
-</div>
+<!-- <div class="cart-count">
+    <p id="numItemsParagraph" class="text-white padding-small"></p>
+</div> -->
+
+<!-- <p id="numItemsParagraph" class="text-white padding-small"></p> -->
 
 
 

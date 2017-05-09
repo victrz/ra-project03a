@@ -4,6 +4,7 @@ export default class QuickView{
     this.quickViewView = quickViewView;
   }
   receiveSku(sku){
+    //receive SKU from carousel and passes it to quickViewView:
     this.quickViewView.matchProductToSku(sku);
   }
 }

@@ -4,9 +4,11 @@ export default class Carousel{
     this.cart = cart;
     this.quickView = quickView;
   }
+  //pass sku from carouselView to cart:
   passSkuToCart(sku){
   this.cart.addItemToCart(sku, 1);
   }
+  //pass sku from carouselView to QuickView:
   passSkuToQV(sku){
   this.quickView.receiveSku(sku);
   }

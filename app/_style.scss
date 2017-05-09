@@ -40,6 +40,15 @@ h3{
   color: #c3c3c3;
   font-size: 0.7em;
 }
+#numItemsParagraph{
+  background-color: green;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 10px;
+  padding: 5px;
+  display: inline;
+}
 
 
 /* images and backgrounds */
@@ -52,14 +61,16 @@ h3{
 .image-shopping{
   height: 10vh;
   /*position: right;*/
-  padding: 10px;
+  padding: 10px 10px 10px 0;
 }
-.red-icon-count{
-  background-color: green;
-  // border-radius: 50%;
-  width: 100px;
-  height: 100px;
-}
+// .cart-count{
+//   background-color: green;
+//   border-radius: 50%;
+//   width: 30px;
+//   height: 30px;
+//   margin: 10px;
+//   padding: 5px;
+// }
 .background-shopping{
   background-image: url("./images/cart-icon.svg");
   background-repeat: no-repeat;
@@ -75,7 +86,7 @@ h3{
   justify-content: center;
 }
 .background-image-updates{
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+  background-image: linear-gradient(rgb(0,153,0), rgb(51,102,0));
   background-size: cover;
   background-repeat: no-repeat ;
 }
@@ -306,9 +317,10 @@ footer{
   left: 300px;
   z-index:3000;
   background-color: white;
-  height: auto;
-  width: 60%;
+  height: 60%;
+  width: 70%;
   display: none;
+  overflow: auto;
 }
 /*MEDIA QUERIES*/
 

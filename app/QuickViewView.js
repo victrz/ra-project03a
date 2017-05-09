@@ -5,6 +5,8 @@ export default class QuickViewView{
   }
   matchProductToSku(sku){
     let allTheProducts = this.app.allProducts.productList;
+    //loop through all of the products and find a product whose SKU matching the
+    //SKU from the button that was clicked in carousel view:
     for (let y=0; y<allTheProducts.length; y++){
             if (sku == allTheProducts[y].sku){
               let itemSku = allTheProducts[y].sku;
@@ -16,6 +18,7 @@ export default class QuickViewView{
             }
     };
   }
+  //renders quick view  for the product:
   createQV(sku, image, price, name, manufacturer){
       document.getElementById("load-qv").style.display = "block";
       document.getElementById("quick-view").style.display= "block";
@@ -34,6 +37,7 @@ export default class QuickViewView{
       newCartButton.setAttribute("class","green-button");
       newCartButton.setAttribute("class","text-white");
       newCartButton.appendChild(document.createTextNode("Add To Cart"));
+      //binds the button so the data-sku SKU can be used to add SKU to cart:
       newCartButton.addEventListener("click",this.onClickAddToCart.bind(this),false);
       return newCartButton;
   }
@@ -43,6 +47,7 @@ export default class QuickViewView{
     }
     onClickAddToCart(e){
         let currentSku = e.target.getAttribute("data-sku");
+        //passes the SKU to cart to add item to cart:
         this.app.cart.addItemToCart(currentSku, 1);
     }
 }

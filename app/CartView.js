@@ -1,4 +1,3 @@
-
 import AllProducts from './AllProducts';
 export default class CartView {
     constructor(allProducts){
@@ -6,15 +5,16 @@ export default class CartView {
     }
     onClickOpenCart(e){
       let allTheProducts = this.products;
+      //session storage holds SKUs of the items that have been added to the cart as keys
+      //and the quantity of each SKU as the values:
       let ss = window.sessionStorage;
-      console.log("SESSION STORAGE:");
-      console.log(ss);
+      //renders the cart view pop-up(with screen overlay):
       document.getElementById("load-cart").style.display = "block";
       document.getElementById("yourCart").style.display= "block";
-      let closeCart = document.getElementById("close-cart").appendChild(document.createTextNode("close window"));
       document.getElementById("close-cart").addEventListener("click",this.cv.onClickCloseCart,false);
-      //if ss.length==0 render "your cart is empty"
-
+      document.getElementById("empty-cart").addEventListener("click",this.cv.onClickEmptyCart.bind(ss),false);
+      document.getElementById("checkout-button").addEventListener("click",this.cv.onClickCheckout,false);
+      //takes each item SKU in session storage and finds it's corresponding product:
       var findInSession = function (products, sku) {
           if (products) {
               for (var i = 0; i < products.length; i++) {
@@ -26,31 +26,62 @@ export default class CartView {
               }
           }
       };
-      for (let z=0; z<ss.length; z++){
+      for (var z=0; z<ss.length; z++){
         let skuKey = ss.key(z);
+        //next step: skuQty doesn't work.
+        let skuQty = ss.getItem(z);
+        //takes matched product and renders information in cart view:
         let match = findInSession(allTheProducts, skuKey);
-        console.log(match);
-        this.cv.createItem(match.sku, match.image, match.salePrice, match.name, match.manufacturer)
+        this.cv.createItem(match.sku, match.image, match.salePrice, match.name, match.manufacturer, skuQty)
       }
     }
-    //overflow scroll?
-
-      createItem(itemSku, itemImage, itemPrice, itemName, itemManufacturer){
-        console.log("CREATING ITEM");
-        console.log(itemImage);
+      createItem(itemSku, itemImage, itemPrice, itemName, itemManufacturer, itemQty){
+        //creates a row in which each product in the cart is listed:
         let itemDiv = document.createElement("div");
         itemDiv.setAttribute("class","itemRow");
+        itemDiv.setAttribute("class","flex");
         let imageCart = this.createImage(itemImage);
         itemDiv.appendChild(imageCart);
-        // let priceCart = document.getElementById("price-cart").appendChild(document.createTextNode(itemPrice));
-        // let nameCart = document.getElementById("name-cart").appendChild(document.createTextNode(itemName));
-        // let qtyCart = document.getElementById("qty-cart").appendChild(document.createTextNode(itemQty));
-        //let newUpdateButton = this.createUpdateItemButton(itemSku);
-        //document.getElementById("cart-view-buttons").appendChild(newUpdateButton);
-        //let newRemoveButton = this.createRemoveItemButton(itemSku);
-        //document.getElementById("cart-view-buttons").appendChild(newRemoveButton);
+        let nameCart = this.createName(itemName);
+        itemDiv.appendChild(nameCart);
+        let priceCart = this.createPrice(itemPrice);
+        itemDiv.appendChild(priceCart);
+        let qtyCart = this.createQty(itemQty);
+        itemDiv.appendChild(qtyCart);
+        //creates a div to hold "update" and "remove" buttons:
+        let buttonsDiv = document.createElement("div");
+        buttonsDiv.setAttribute("id","cart-view-buttons");
+        buttonsDiv.setAttribute("class","flex");
+        buttonsDiv.setAttribute("class","flex-col");
+        let newUpdateButton = this.createUpdateItemButton(itemSku);
+        buttonsDiv.appendChild(newUpdateButton);
+        let newRemoveButton = this.createRemoveItemButton(itemSku);
+        buttonsDiv.appendChild(newRemoveButton);
+        //appends buttons div to item div (row in cart view):
+        itemDiv.appendChild(buttonsDiv);
+        //appends each item's row to the cart view:
         yourCart.appendChild(itemDiv);
-
+    }
+    createQty(itemQty){
+      let newProductQty = document.createElement("p");
+      newProductQty.setAttribute("class","padding");
+      let contentQty = document.createTextNode(`${itemQty}`);
+      newProductQty.append(contentQty);
+      return newProductQty;
+    }
+    createName(itemName){
+      let newProductName = document.createElement("p");
+      newProductName.setAttribute("class","padding");
+      let contentName = document.createTextNode(`${itemName}`);
+      newProductName.append(contentName);
+      return newProductName;
+    }
+    createPrice(itemPrice){
+      let newProductPrice = document.createElement("h2");
+      newProductPrice.setAttribute("class","padding");
+      let contentPrice = document.createTextNode(`$ ${itemPrice}`);
+      newProductPrice.append(contentPrice);
+      return newProductPrice;
     }
     onClickCloseCart(e){
       document.getElementById("load-cart").style.display = "none";
@@ -58,42 +89,38 @@ export default class CartView {
     }
     createImage(itemImage){
       let newProductImage = document.createElement("img");
-      //newProductImage.src = `${itemImage}`;
       newProductImage.setAttribute("src", itemImage);
-      newProductImage.setAttribute("height","200px");
-      newProductImage.setAttribute("width","200px");
-      newProductImage.setAttribute("alt",`${name}`);
+      newProductImage.setAttribute("width","150px");
+      newProductImage.setAttribute("alt",`image of ${name}`);
+      newProductImage.setAttribute("class","padding");
       return newProductImage;
     }
     createUpdateItemButton(sku){
-        let newUpdateButton = document.createElement("button");
-        newUpdateButton.setAttribute("data-sku",sku);
-        newUpdateButton.setAttribute("type","button");
-        newUpdateButton.setAttribute("class","white-button");
-        newUpdateButton.setAttribute("class","text-white");
-        newUpdateButton.setAttribute("class","padding");
-        newUpdateButton.setAttribute("height","50px");
-        newUpdateButton.setAttribute("width","100px");
-        newUpdateButton.appendChild(document.createTextNode("update"));
-        //newUpdateButton.addEventListener("click",this.onClickUpdateCart.bind(this),false);
-        return newUpdateButton;
+      let newUpdateButton = document.createElement("button");
+      newUpdateButton.setAttribute("data-sku",sku);
+      newUpdateButton.setAttribute("type","button");
+      newUpdateButton.setAttribute("class","white-button");
+      newUpdateButton.setAttribute("height","50px");
+      newUpdateButton.setAttribute("width","100px");
+      newUpdateButton.appendChild(document.createTextNode("update"));
+      //next step: write event handler functions:
+      //newUpdateButton.addEventListener("click",this.onClickUpdateCart.bind(this),false);
+      return newUpdateButton;
     }
     createRemoveItemButton(sku){
         let newRemoveButton = document.createElement("button");
         newRemoveButton.setAttribute("data-sku",sku);
         newRemoveButton.setAttribute("type","button");
         newRemoveButton.setAttribute("class","gray-button");
-        newRemoveButton.setAttribute("class","text-white");
-        newRemoveButton.setAttribute("class","padding");
         newRemoveButton.appendChild(document.createTextNode("remove"));
+        //next step: write event handler functions:
         //newRemoveButton.addEventListener("click",this.onClickRemoveItem.bind(this),false);
         return newRemoveButton;
     }
-    //
-    // onClickUpdateCart(e){
-    //   let currentSku = e.target.getAttribute("data-sku");
-    //   //this.app.cart.addItemToCart(currentSku, 1);
-    // }
+    onClickCheckout(e){
+      window.alert("check out!");
+   }
+
     // onClickRemoveItem(e){
     //   // let sku = e.target.getAttribute("data-sku");
     //   // //set ss for value of sku key, sutbract one
@@ -124,7 +151,11 @@ export default class CartView {
     //   //   }
     //   // this.updateLittleCartIcon(newTotalQty);
     // }
-    // onClickEmptyCart(e){
-    //   this.ss.clear();
-    // }
+    onClickEmptyCart(e){
+      this.clear();
+      console.log(this);
+      //next step: update cart icon to show sessionStorage is now empty
+      // let qty = 0;
+      // cart.updateLittleCartIcon(qty);
+    }
 }
