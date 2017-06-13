@@ -10,7 +10,9 @@ export default class CartView {
       //session storage holds SKUs of the items that have been added to the cart as keys
       //and the quantity of each SKU as the values:
       let ss = window.sessionStorage;
+      let cartTotalCost = 0;
       //renders the cart view pop-up(with screen overlay):
+
       document.getElementById("load-cart").style.display = "block";
       document.getElementById("yourCart").style.display= "block";
       document.getElementById("close-cart").addEventListener("click",this.cv.onClickCloseCart,false);
@@ -19,27 +21,46 @@ export default class CartView {
       //takes each item SKU in session storage and finds it's corresponding product:
       let findInSession = function (products, sku) {
           if (products) {
+            console.log("findInSession");
               for (let i = 0; i < products.length; i++) {
                   if (products[i].sku == sku) {
                       return products[i];
                   }
-                  let found = findInSession(products[i], sku);
-                  if (found) return found;
+                  // let found = findInSession(products[i], sku);
+                  // if (found) return found;
               }
           }
       };
       for (let z=0; z<ss.length; z++){
         let skuKey = ss.key(z);
         //next step: skuQty doesn't work.
-        let skuQty = ss.getItem(ss.key(z));
+        let skuQty = ss.getItem(skuKey);
         //console.log(skuQty);
         //takes matched product and renders information in cart view:
         let match = findInSession(allTheProducts, skuKey);
+        let productUnitPrice = match.salePrice;
+        let productTotalPrice = parseInt(productUnitPrice) * parseInt(skuQty);
+        cartTotalCost += productTotalPrice;
+        document.getElementById("cart-total").innerHTML = cartTotalCost;
+
+
         this.cv.createItem(match.sku, match.image, match.salePrice, match.name, match.manufacturer, skuQty, ss)
       }
     }
+    // cartTotal(ss){
+    //   for (let z=0; z<ss.length; z++){
+    //     let skuKey = ss.key(z);
+    //     let skuQty = ss.getItem(skuKey);
+    //     let match = findInSession(allTheProducts, skuKey);
+    //     let productUnitPrice = match.salePrice;
+    //     let productTotalPrice = productUnitPrice.parseInt() * skuQty.parseInt();
+    //   }
+    //
+    // }
       createItem(itemSku, itemImage, itemPrice, itemName, itemManufacturer, skuQty, ss){
         //creates a row in which each product in the cart is listed:
+        let itemWrap = document.createElement("div");
+        itemWrap.setAttribute("class","flex");
         let itemDiv = document.createElement("div");
         itemDiv.setAttribute("class","itemRow");
         itemDiv.setAttribute("class","flex");
@@ -49,9 +70,9 @@ export default class CartView {
         itemDiv.appendChild(nameCart);
         let priceCart = this.createPrice(itemPrice, skuQty);
         itemDiv.appendChild(priceCart);
-        // let quantityCart = this.createQty();
-        //let qtyCart = this.createQty(itemQty);
-        //itemDiv.appendChild(qtyCart);
+        let quantityCart = this.createQty(skuQty, itemSku);
+        // let qtyCart = this.createQty(itemQty);
+        itemDiv.appendChild(quantityCart);
         //creates a div to hold "update" and "remove" buttons:
         let buttonsDiv = document.createElement("div");
         buttonsDiv.setAttribute("id","cart-view-buttons");
@@ -62,16 +83,31 @@ export default class CartView {
         let newRemoveButton = this.createRemoveItemButton(itemSku, ss);
         buttonsDiv.appendChild(newRemoveButton);
         //appends buttons div to item div (row in cart view):
-        itemDiv.appendChild(buttonsDiv);
         //appends each item's row to the cart view:
-        testing.appendChild(itemDiv);
+        itemWrap.appendChild(itemDiv);
+        itemWrap.appendChild(buttonsDiv);
+
+        testing.appendChild(itemWrap);
+
     }
-    createQty(itemQty){
-      let newProductQty = document.createElement("p");
-      newProductQty.setAttribute("class","padding");
-      let contentQty = document.createTextNode(`${itemQty}`);
-      newProductQty.append(contentQty);
-      return newProductQty;
+    createQty(itemQty, itemSku){
+      let f = document.createElement("form");
+      f.setAttribute('method',"post");
+      f.setAttribute('class',"padding");
+      f.setAttribute('id',"quantity-form");
+      let i = document.createElement("input"); //input element, text
+      i.setAttribute('type',"text");
+      i.setAttribute('name',"quantity");
+      i.setAttribute('value',`${itemQty}`);
+      var s = document.createElement("input"); //input element, Submit button
+      s.setAttribute('type',"submit");
+      s.setAttribute('value',"Submit");
+      // s.addEventListener("click",this.onClickUpdateCart.bind(sku, ss),false);
+
+      f.appendChild(i);
+      f.appendChild(s);
+
+      return f;
     }
     createName(itemName){
       let newProductName = document.createElement("p");
@@ -83,7 +119,7 @@ export default class CartView {
     createPrice(itemPrice, skuQty){
       let newProductPrice = document.createElement("h2");
       newProductPrice.setAttribute("class","padding");
-      let contentPrice = document.createTextNode(`$ ${itemPrice}, ${skuQty}`);
+      let contentPrice = document.createTextNode(`$ ${itemPrice}`);
       newProductPrice.append(contentPrice);
       return newProductPrice;
     }
@@ -99,7 +135,7 @@ export default class CartView {
       newProductImage.setAttribute("class","padding");
       return newProductImage;
     }
-    createUpdateItemButton(sku, ss){
+    createUpdateItemButton(sku, ss){//button should be a part of a form, bind THIS (the entire form) to the update button
       let newUpdateButton = document.createElement("button");
       newUpdateButton.setAttribute("data-sku",sku);
       newUpdateButton.setAttribute("type","button");
@@ -108,7 +144,8 @@ export default class CartView {
       newUpdateButton.setAttribute("width","100px");
       newUpdateButton.appendChild(document.createTextNode("update"));
       //next step: write event handler functions:
-      //newUpdateButton.addEventListener("click",this.onClickUpdateCart.bind(this),false);
+      //on click input value set item of sku to inputted value
+      //newUpdateButton.addEventListener("click",this.onClickUpdateCart.bind(sku, ss),false);
       return newUpdateButton;
     }
     createRemoveItemButton(sku, ss){
@@ -124,18 +161,26 @@ export default class CartView {
     onClickCheckout(e){
       window.alert("check out!");
    }
+   onClickUpdateCart(e){
+     //THIS should be the form where the input is located
+    //  var inputValue = this.value;
+    //  ss.setItem(sku, inputValue)
+   }
 
     onClickRemoveItem(e){
       e.removeItem(this);
       let qty = e.length;
-      document.getElementById("numItemsParagraph").innerHTML = "";
+      // document.getElementById("numItemsParagraph").innerHTML = "";
       document.getElementById("numItemsParagraph").innerHTML = qty ;
       if (e.length <= 0){
-        document.getElementById('testing').innerHTML = "";
         document.getElementById("numItemsParagraph").style.display = 'none';
+        document.getElementById('testing').innerHTML = "your cart is empty";
+        e.clear();
+        document.getElementById("cart-total").innerHTML = "0";
 
       };
       console.log(e);
+    }
 
     //   // let sku = e.target.getAttribute("data-sku");
     //   // //set ss for value of sku key, sutbract one
@@ -165,14 +210,14 @@ export default class CartView {
     //   //       //update cart total
     //   //   }
     //   // this.updateLittleCartIcon(newTotalQty);
-    }
+
     onClickEmptyCart(e){
       this.clear();
-      document.getElementById('testing').innerHTML = "";
+      document.getElementById('testing').innerHTML = "your cart is empty";
       document.getElementById("numItemsParagraph").innerHTML = "";
       let qty = 0;
       document.getElementById("numItemsParagraph").style.display = 'none';
-
+      document.getElementById("cart-total").innerHTML = "0";
 
     }
 }

@@ -322,6 +322,24 @@ footer{
   display: none;
   overflow: auto;
 }
+
+#quantity-form{
+  background-color: white;
+  padding: 2px;
+  margin: auto;
+  min-width: 50px;
+}
+
+input[type=text] {
+  float: left;
+  width: 40px;
+  font: bold 20px Helvetica, sans-serif;
+  padding: 3px 0 0 0;
+  text-align: center;
+}
+.itemRow{
+  width: 80%;
+}
 /*MEDIA QUERIES*/
 
   @media only screen and (max-device-width: 600px){

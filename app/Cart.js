@@ -28,6 +28,7 @@ addItemToCart(sku,qty = 1){
           newQty = newQty.toString();
           this.ss.setItem(key,newQty);
           match = 1;
+
           return;
       }
   }
@@ -35,22 +36,29 @@ addItemToCart(sku,qty = 1){
   // so create a new key value and update view
   if (match<=0){
       this.ss.setItem(sku,qty.toString());
+
   }
   // sum up all the current quantities to get new total
+  // let sumOfItems = 0;
   for (let i=0; i< this.ss.length; i++){
       let skuKey = this.ss.key(i);
       //console.log(skuKey);
       let qtyValue = this.ss.getItem(skuKey);
+      // sumOfItems += parseInt(qtyValue);
       newTotalQty+= parseInt(qtyValue);
   }
+
   this.updateLittleCartIcon(newTotalQty);
 }
 updateLittleCartIcon(qty){
+  console.log("new total qty cart.js =");
+  console.log(qty);
   //pass this object to cartView by binding it to the event handling function:
   let passToCartView = {products: this.app.allProducts.productList, createItem: this.cartView.createItem, cv: this.cartView, icon: this.updateLittleCartIcon};
   //updates the quantity shown in the shopping cart icon's counter:
   document.getElementById("numItemsParagraph").style.display = 'block';
   document.getElementById("numItemsParagraph").innerHTML = qty;
+
   //on clicking the shopping cart icon's counter, open cart view:
   document.getElementById("numItemsParagraph").addEventListener("click", this.cartView.onClickOpenCart.bind(passToCartView), false);
 }
