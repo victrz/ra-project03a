@@ -128,17 +128,18 @@ export default class CarouselView{
     }
     //next step: incorporate Flickity to render functioning carousel
     createCarousel(node){
+      document.getElementById("carouselSection").appendChild(node);
+
             // console.log(this.flickityElements);
-            // window.addEventListener("load",(e) => {
+            window.addEventListener("load",(e) => {
             //     console.log("page loaded...processing");
-                document.getElementById("carouselSection").appendChild(node);
             //
-            //     let elem = document.querySelector('.main-carousel');
-            //     let f = new Flickity( elem, {
+                let elem = document.querySelector('.main-carousel');
+                let f = new Flickity( elem, {
             //         // options
-            //         cellAlign: 'left',
-            //         contain: true
-            //     });
-            // },false);
-}
+                    cellAlign: 'left',
+                    contain: true
+                });
+            },false);
+      }
 }

@@ -17,7 +17,8 @@ addItemToCart(sku,qty = 1){
   let newTotalQty = 0;
   let match = 0;
   for (let key in this.ss){
-      if (key == sku.toString() ){
+      if (key == sku ){
+        //^sku.toString()
           // get current quantity (its a string)
           // convert it to a number;
           let oldQty = this.ss.getItem(key);
@@ -27,6 +28,7 @@ addItemToCart(sku,qty = 1){
           newQty = newQty.toString();
           this.ss.setItem(key,newQty);
           match = 1;
+          return;
       }
   }
   // we didn't find a match
@@ -45,8 +47,9 @@ addItemToCart(sku,qty = 1){
 }
 updateLittleCartIcon(qty){
   //pass this object to cartView by binding it to the event handling function:
-  let passToCartView = {products: this.app.allProducts.productList, createItem: this.cartView.createItem, cv: this.cartView};
+  let passToCartView = {products: this.app.allProducts.productList, createItem: this.cartView.createItem, cv: this.cartView, icon: this.updateLittleCartIcon};
   //updates the quantity shown in the shopping cart icon's counter:
+  document.getElementById("numItemsParagraph").style.display = 'block';
   document.getElementById("numItemsParagraph").innerHTML = qty;
   //on clicking the shopping cart icon's counter, open cart view:
   document.getElementById("numItemsParagraph").addEventListener("click", this.cartView.onClickOpenCart.bind(passToCartView), false);

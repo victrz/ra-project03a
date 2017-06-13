@@ -2,8 +2,10 @@ import AllProducts from './AllProducts';
 export default class CartView {
     constructor(allProducts){
       this.allProducts = allProducts;
+
     }
     onClickOpenCart(e){
+      // console.log(this);
       let allTheProducts = this.products;
       //session storage holds SKUs of the items that have been added to the cart as keys
       //and the quantity of each SKU as the values:
@@ -15,28 +17,28 @@ export default class CartView {
       document.getElementById("empty-cart").addEventListener("click",this.cv.onClickEmptyCart.bind(ss),false);
       document.getElementById("checkout-button").addEventListener("click",this.cv.onClickCheckout,false);
       //takes each item SKU in session storage and finds it's corresponding product:
-      var findInSession = function (products, sku) {
+      let findInSession = function (products, sku) {
           if (products) {
-              for (var i = 0; i < products.length; i++) {
+              for (let i = 0; i < products.length; i++) {
                   if (products[i].sku == sku) {
                       return products[i];
                   }
-                  var found = findInSession(products[i], sku);
+                  let found = findInSession(products[i], sku);
                   if (found) return found;
               }
           }
       };
-      for (var z=0; z<ss.length; z++){
+      for (let z=0; z<ss.length; z++){
         let skuKey = ss.key(z);
         //next step: skuQty doesn't work.
-        //let skuQty = ss.getItem(skuKey);
+        let skuQty = ss.getItem(ss.key(z));
         //console.log(skuQty);
         //takes matched product and renders information in cart view:
         let match = findInSession(allTheProducts, skuKey);
-        this.cv.createItem(match.sku, match.image, match.salePrice, match.name, match.manufacturer)
+        this.cv.createItem(match.sku, match.image, match.salePrice, match.name, match.manufacturer, skuQty, ss)
       }
     }
-      createItem(itemSku, itemImage, itemPrice, itemName, itemManufacturer){
+      createItem(itemSku, itemImage, itemPrice, itemName, itemManufacturer, skuQty, ss){
         //creates a row in which each product in the cart is listed:
         let itemDiv = document.createElement("div");
         itemDiv.setAttribute("class","itemRow");
@@ -45,8 +47,9 @@ export default class CartView {
         itemDiv.appendChild(imageCart);
         let nameCart = this.createName(itemName);
         itemDiv.appendChild(nameCart);
-        let priceCart = this.createPrice(itemPrice);
+        let priceCart = this.createPrice(itemPrice, skuQty);
         itemDiv.appendChild(priceCart);
+        // let quantityCart = this.createQty();
         //let qtyCart = this.createQty(itemQty);
         //itemDiv.appendChild(qtyCart);
         //creates a div to hold "update" and "remove" buttons:
@@ -54,14 +57,14 @@ export default class CartView {
         buttonsDiv.setAttribute("id","cart-view-buttons");
         buttonsDiv.setAttribute("class","flex");
         buttonsDiv.setAttribute("class","flex-col");
-        let newUpdateButton = this.createUpdateItemButton(itemSku);
+        let newUpdateButton = this.createUpdateItemButton(itemSku, ss);
         buttonsDiv.appendChild(newUpdateButton);
-        let newRemoveButton = this.createRemoveItemButton(itemSku);
+        let newRemoveButton = this.createRemoveItemButton(itemSku, ss);
         buttonsDiv.appendChild(newRemoveButton);
         //appends buttons div to item div (row in cart view):
         itemDiv.appendChild(buttonsDiv);
         //appends each item's row to the cart view:
-        yourCart.appendChild(itemDiv);
+        testing.appendChild(itemDiv);
     }
     createQty(itemQty){
       let newProductQty = document.createElement("p");
@@ -77,10 +80,10 @@ export default class CartView {
       newProductName.append(contentName);
       return newProductName;
     }
-    createPrice(itemPrice){
+    createPrice(itemPrice, skuQty){
       let newProductPrice = document.createElement("h2");
       newProductPrice.setAttribute("class","padding");
-      let contentPrice = document.createTextNode(`$ ${itemPrice}`);
+      let contentPrice = document.createTextNode(`$ ${itemPrice}, ${skuQty}`);
       newProductPrice.append(contentPrice);
       return newProductPrice;
     }
@@ -96,7 +99,7 @@ export default class CartView {
       newProductImage.setAttribute("class","padding");
       return newProductImage;
     }
-    createUpdateItemButton(sku){
+    createUpdateItemButton(sku, ss){
       let newUpdateButton = document.createElement("button");
       newUpdateButton.setAttribute("data-sku",sku);
       newUpdateButton.setAttribute("type","button");
@@ -108,25 +111,36 @@ export default class CartView {
       //newUpdateButton.addEventListener("click",this.onClickUpdateCart.bind(this),false);
       return newUpdateButton;
     }
-    createRemoveItemButton(sku){
+    createRemoveItemButton(sku, ss){
         let newRemoveButton = document.createElement("button");
         newRemoveButton.setAttribute("data-sku",sku);
         newRemoveButton.setAttribute("type","button");
         newRemoveButton.setAttribute("class","gray-button");
         newRemoveButton.appendChild(document.createTextNode("remove"));
         //next step: write event handler functions:
-        //newRemoveButton.addEventListener("click",this.onClickRemoveItem.bind(this),false);
+        newRemoveButton.addEventListener("click",this.onClickRemoveItem.bind(sku, ss),false);
         return newRemoveButton;
     }
     onClickCheckout(e){
       window.alert("check out!");
    }
 
-    // onClickRemoveItem(e){
+    onClickRemoveItem(e){
+      e.removeItem(this);
+      let qty = e.length;
+      document.getElementById("numItemsParagraph").innerHTML = "";
+      document.getElementById("numItemsParagraph").innerHTML = qty ;
+      if (e.length <= 0){
+        document.getElementById('testing').innerHTML = "";
+        document.getElementById("numItemsParagraph").style.display = 'none';
+
+      };
+      console.log(e);
+
     //   // let sku = e.target.getAttribute("data-sku");
     //   // //set ss for value of sku key, sutbract one
     //   // //if value is 1, subtract 1 and remove sku entry
-    //   //       // this.ss.setItem(sku,qty.toString());
+            // this.ss.setItem(sku,qty.toString());
     //   //       // this.updateLittleCartIcon(qty);
     //   //       // return ;
     //   //   let newTotalQty = 0;
@@ -151,12 +165,14 @@ export default class CartView {
     //   //       //update cart total
     //   //   }
     //   // this.updateLittleCartIcon(newTotalQty);
-    // }
+    }
     onClickEmptyCart(e){
       this.clear();
-      console.log(this);
-      //next step: update cart icon to show sessionStorage is now empty
-      // let qty = 0;
-      // cart.updateLittleCartIcon(qty);
+      document.getElementById('testing').innerHTML = "";
+      document.getElementById("numItemsParagraph").innerHTML = "";
+      let qty = 0;
+      document.getElementById("numItemsParagraph").style.display = 'none';
+
+
     }
 }
