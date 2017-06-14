@@ -2,7 +2,9 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Miriam Libre', sans-serif;
+  // font-family: 'Share Tech Mono', monospace;
+
+  // font-family: 'Miriam Libre', sans-serif;
 
 }
 
@@ -313,8 +315,9 @@ footer{
 }
 #yourCart{
   position:fixed;
+  // margin: auto;
   top: 150px;
-  left: 300px;
+  left: 15%;
   z-index:3000;
   background-color: white;
   height: 60%;
@@ -332,8 +335,9 @@ footer{
 
 input[type=text] {
   float: left;
-  width: 40px;
-  font: bold 20px Helvetica, sans-serif;
+  width: 25px;
+  font: bold;
+  // 20px Helvetica, sans-serif;
   padding: 3px 0 0 0;
   text-align: center;
 }

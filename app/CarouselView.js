@@ -13,7 +13,8 @@ export default class CarouselView{
         let documentFragment = new DocumentFragment();
         //creates the outer div of the carousel, carousel cells will be contained in this div:
         let outerDiv = document.createElement("div");
-        outerDiv.setAttribute("class","main-carousel");
+        outerDiv.setAttribute("class","main-carousel ");
+
         //loop through products and create a carousel cell div for each cell:
         for (let i=0; i<products.length; i++){
             let eachCell = document.createElement("div");
@@ -130,16 +131,12 @@ export default class CarouselView{
     createCarousel(node){
       document.getElementById("carouselSection").appendChild(node);
 
-            // console.log(this.flickityElements);
-            window.addEventListener("load",(e) => {
-            //     console.log("page loaded...processing");
-            //
-                let elem = document.querySelector('.main-carousel');
-                let f = new Flickity( elem, {
-            //         // options
-                    cellAlign: 'left',
-                    contain: true
-                });
-            },false);
-      }
+
+      var elem = document.querySelector('.main-carousel');
+      var flkty = new Flickity( elem, {
+        // options
+        cellAlign: 'left',
+        contain: true
+      });
+    }
 }
