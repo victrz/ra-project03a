@@ -6,6 +6,7 @@ constructor(app){
   this.app = app;
   this.ss = window.sessionStorage;
 }
+
 addItemToCart(sku,qty = 1){
   //this.ss.setItem(sku,qty.toString());
   var sessionLength = this.ss.length;

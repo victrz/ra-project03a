@@ -163,14 +163,18 @@ export default class CartView {
       window.alert("check out!");
    }
    onClickUpdateCart(ss){
-     let inputValue = Math.max(0, this.value);
+     let value =  parseInt(this.value)
+     let inputValue = Math.max(0, value);
      let sku = this.getAttribute("data-sku");
-     if (inputValue == 0){
+     if (inputValue === 0){
        ss.removeItem(sku);
      }else{
        ss.setItem(sku, inputValue);
      }
      let newTotalQty = 0;
+    //  if(ss.length<=0){
+    //    ss.clear();
+    //  }
      for (let i=0; i< ss.length; i++){
          let skuKey = ss.key(i);
          let qtyValue = ss.getItem(skuKey);
