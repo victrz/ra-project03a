@@ -173,31 +173,35 @@ export default class CartView {
    }
 
     onClickRemoveItem(price, qty, ss){
-      let old = document.getElementById("cart-total").innerHTML;
-      console.log(old);
-      let newTotal = old - (price*qty);
+      //check if item is in SS:
+      for (let key in ss){
+        if (key == this){
+          let old = document.getElementById("cart-total").innerHTML;
+          console.log(old);
+          let newTotal = old - (price*qty);
 
-      ss.removeItem(this);
+          ss.removeItem(this);
 
-      console.log(ss);
+          console.log(ss);
 
-      let newTotalQty = 0;
-      for (let i=0; i< ss.length; i++){
-          let skuKey = ss.key(i);
-          let qtyValue = ss.getItem(skuKey);
-          newTotalQty+= parseInt(qtyValue);
+          let newTotalQty = 0;
+          for (let i=0; i< ss.length; i++){
+              let skuKey = ss.key(i);
+              let qtyValue = ss.getItem(skuKey);
+              newTotalQty+= parseInt(qtyValue);
+          }
+
+          document.getElementById("cart-total").innerHTML = newTotal.toFixed(2);
+
+          document.getElementById("numItemsParagraph").innerHTML = newTotalQty ;
+          if (ss.length <= 0){
+            document.getElementById("numItemsParagraph").style.display = 'none';
+            document.getElementById('testing').innerHTML = "<p class='text-align-center'>your cart is empty</p>";
+            ss.clear();
+            document.getElementById("cart-total").innerHTML = "0";
+          }
+        }
       }
-
-      document.getElementById("cart-total").innerHTML = newTotal.toFixed(2);
-
-      document.getElementById("numItemsParagraph").innerHTML = newTotalQty ;
-      if (ss.length <= 0){
-        document.getElementById("numItemsParagraph").style.display = 'none';
-        document.getElementById('testing').innerHTML = "<p class='text-align-center'>your cart is empty</p>";
-        ss.clear();
-        document.getElementById("cart-total").innerHTML = "0";
-
-      };
     }
 
 

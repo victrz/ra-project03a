@@ -120,14 +120,14 @@
 <section class="flex flex-col row-width-100" id="shop">
 
 <section class="flex row-width-100 flex-wrap-mobile flex-col-mobile">
-        <div class="flex flex-col flex-just-center  flex-5-desktop flex-5-tablet large-box image-cat-cell box-margin text-align-center">
+        <div class="hover flex flex-col flex-just-center  flex-5-desktop flex-5-tablet large-box image-cat-cell box-margin text-align-center">
           <p class="text-white display-block font-size">CELL PHONES</p>
         </div>
         <div class="flex  flex-5-desktop flex-5-tablet">
-            <div class="small-box image-cat-desktop box-margin text-align-center flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-2-mobile">
+            <div class="hover small-box image-cat-desktop box-margin text-align-center flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-2-mobile">
               <p class="text-white display-block font-size">DESKTOPS</p>
             </div>
-            <div class="small-box image-cat-homeaudio box-margin text-align-center flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-2-mobile">
+            <div class="hover small-box image-cat-homeaudio box-margin text-align-center flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-2-mobile">
               <p class="text-white display-block font-size">HOME AUDIO</p>
             </div>
         </div>
@@ -135,14 +135,14 @@
 <section class="flex row-width-100 flex-wrap-mobile flex-col-mobile">
 
         <div class=" flex  flex-5-desktop flex-5-tablet flex-1-mobile ">
-            <div class="image-cat-tablet small-box cat-tablet text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-1-mobile">
+            <div class="hover image-cat-tablet small-box cat-tablet text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-1-mobile">
               <p class="text-white display-block font-size">TABLETS</p>
             </div>
-            <div class="image-cat-tv small-box text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-1-mobile">
+            <div class="hover image-cat-tv small-box text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-1-mobile">
               <p class="text-white display-block font-size">4K TVs</p>
             </div>
         </div>
-        <div class="large-box image-cat-laptop text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-grow-1-mobile  ">
+        <div class="hover large-box image-cat-laptop text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-grow-1-mobile  ">
           <p class="text-white display-block font-size">LAPTOPS/ULTRABOOKS</p>
         </div>
 </section>
@@ -155,8 +155,8 @@
 
 <section id="carouselSection" class="flex flex-col flex-align-center padding">
   <div class="flex flex-col text-align-center flex-just-center padding-bottom" id="featured">
-    <h2 class="text-top text-black">You like stuff?</h2>
-    <h3 class="text-sub text-black">We got stuff.</h3>
+    <h2 class="text-top text-black"><b>You like stuff?</b> We got stuff.</h2>
+    <!-- <h3 class="text-sub text-black">We got stuff.</h3> -->
   </div>
 
 
@@ -173,9 +173,9 @@
 
 <!-- EMAIL FORM IS NEXT-->
 
-    <form name="form1" class="flex flex-just-between">
-        <input id="email-input"type="text" name="yourEmail" value="Your Email" class="email text-email text-gray">
-        <input type="submit" value="Subscribe" onclick="ValidateEmail(document.form1.yourEmail)" class="green-button text-white text-button">
+    <form name="form1" class="flex flex-just-between email-form">
+        <input id="email-input"type="text" name="yourEmail" value="Your Email" class="email text-email text-gray email-form">
+        <input type="submit" value="Subscribe" onclick="ValidateEmail(document.form1.yourEmail)" class="green-button text-white text-button email-form">
     </form>
   </section>
 
