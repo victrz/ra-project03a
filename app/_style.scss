@@ -2,22 +2,35 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  // font-family: 'Share Tech Mono', monospace;
-
-  // font-family: 'Miriam Libre', sans-serif;
 
 }
 
+$color__accent-main: blue;
+$color__accent-secondary: orange;
+
+@import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,300,400');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
 b{
-  font-family: 'Miriam Libre', sans-serif;
+
+    font-family: 'Permanent Marker', cursive;
+
   font-weight: 900;
-  color: green;
+  color: $color__accent-main;
+}
+li{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: normal;
+}
+p{
+
+      font-family: 'Yanone Kaffeesatz', sans-serif;
+      font-weight: lighter;
 }
 .text-top{
   font-size: 2em;
 }
 .text-sub{
-  font-size: 0.8em;
+  font-size: 1em;
 }
 .text-white{
   color: white;
@@ -31,19 +44,24 @@ b{
 .text-align-center{
   text-align: center;
 }
+h1{
+  font-family: 'Permanent Marker', cursive;
+color: $color__accent-main;
+font-size: 2.2em;
+}
 h2{
-  font-family: 'Miriam Libre', sans-serif;
-  font-weight: 900;
-  color: green;
+
+    font-family: 'Permanent Marker', cursive;
+  color: $color__accent-main;
 }
 h3{
-  font-family: 'Miriam Libre', sans-serif;
-  font-weight: 400;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: normal;
   color: #c3c3c3;
-  font-size: 0.7em;
+  font-size: 1em;
 }
 #numItemsParagraph{
-  background-color: green;
+  background-color: $color__accent-main;
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -65,14 +83,7 @@ h3{
   /*position: right;*/
   padding: 10px 10px 10px 0;
 }
-// .cart-count{
-//   background-color: green;
-//   border-radius: 50%;
-//   width: 30px;
-//   height: 30px;
-//   margin: 10px;
-//   padding: 5px;
-// }
+
 .background-shopping{
   background-image: url("./images/cart-icon.svg");
   background-repeat: no-repeat;
@@ -177,6 +188,9 @@ h3{
 .padding{
   padding: 30px 30px;
 }
+.padding-small{
+  padding: 2px;
+}
 .icon-padding{
   padding: 0 10px 10px 10px;
 }
@@ -196,16 +210,44 @@ form{
   min-width: 400px;
 }
 .green-button{
-  background-color: green;
+  background-color: $color__accent-main;
   border: 2px;
   width: 150px;
 /*  flex-grow: 1; */
   padding: 10px;
 }
+#checkout-button{
+  background-color: $color__accent-main;
+  border: 0px solid #c3c3c3;
+  border-radius: 10px;
+  color: white;
+  // border: 2px;
+  width: 150px;
+/*  flex-grow: 1; */
+  padding: 10px;
+}
+.cart-button{
+  border: 0px solid #c3c3c3;
+  border-radius: 10px;
+  padding: 10px;
+  background: $color__accent-main;
+  color: white;
+}
+.qv-button{
+  border: 0px solid #c3c3c3;
+  border-radius: 10px;
+  padding: 10px;
+  background: $color__accent-secondary;
+  color: white;
+}
 .white-button{
-  background-color: white;
-  color: green;
-  border: 2px solid green;
+  background:none;
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: lighter;
+  font-size: 1em;
 /*  flex-grow: 1; */
   padding: 10px;
 }
@@ -215,6 +257,13 @@ form{
   border: 2px solid #c3c3c3;
 /*  flex-grow: 1; */
   padding: 10px;
+}
+.plain-button{
+  border: 1px solid #c3c3c3;
+  border-radius: 5px;
+  padding: 5px;
+  background: white;
+  color: black;
 }
 .email{
   border-style: none;
@@ -250,7 +299,7 @@ a:hover{
 }
 a:link, a:visited {
     text-decoration: none;
-    color: green;
+    color: $color__accent-main;
 }
 footer{
   background-color: #242424;
@@ -274,6 +323,15 @@ footer{
 }
 .width-60{
   width: 60%;
+}
+.width-80{
+  width: 80%;
+}
+.margin-auto{
+  margin: auto;
+}
+.width-40{
+  width: 40%;
 }
 
 #clone{
@@ -325,6 +383,9 @@ footer{
   display: none;
   overflow: auto;
 }
+.width-20{
+  width: 20%;
+}
 
 #quantity-form{
   background-color: white;
@@ -344,7 +405,22 @@ input[type=text] {
   text-align: center;
 }
 .itemRow{
-  width: 80%;
+  width: auto;
+}
+#testing{
+  width: 90%;
+  margin:auto;
+}
+.flickity-page-dots{
+  bottom: -50px;
+  // margin: 20px;
+}
+#carouselSection{
+  padding-bottom: 80px;
+}
+.qv-title{
+  font-size: 2em;
+  color: $color__accent-secondary;
 }
 /*MEDIA QUERIES*/
 

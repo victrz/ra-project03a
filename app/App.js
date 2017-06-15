@@ -9,10 +9,10 @@ import QuickViewView from './QuickViewView';
 import QuickView from './QuickView';
 
 export default class App {
-  constructor()
-  {
-      this.allProducts = null;
-      this.cartView = new CartView(this.allProducts);
+  constructor(){
+      // this.allProducts = null;
+      this.allProducts = new AllProducts();
+      this.cartView = new CartView(this.allProducts, this);
       this.cart = new Cart(this);
       this.quickViewView = new QuickViewView(this);
       this.quickView = new QuickView(this.quickViewView);
@@ -22,10 +22,23 @@ export default class App {
     }
     init(){
       this.bbService.init(this);
+      console.log("app init");
     }
     iHaveData(theData){
       this.allProducts = theData;
       this.carouselView.init(this.allProducts.productList);
+      this.eventListener(this.allProducts, this.cartView);
+
+    }
+    eventListener(products, cartView){
+      console.log("app eventListener");
+      console.log(products);
+      console.log("here");
+      console.log(cartView);
+      let passToCartView = {products: products.productList, cv: cartView};
+      document.getElementById("numItemsParagraph").addEventListener("click", cartView.onClickOpenCart.bind(passToCartView), false);
+
+
     }
 
 }

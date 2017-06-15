@@ -1,7 +1,7 @@
 import CarouselView from './CarouselView';
 export default class Carousel{
   constructor(cart, quickView){
-    this.cart = cart;
+    this.cart = cart; 
     this.quickView = quickView;
   }
   //pass sku from carouselView to cart:

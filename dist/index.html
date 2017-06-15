@@ -9,16 +9,19 @@
     <meta description="best buy api shopping site"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Miriam+Libre:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Miriam+Libre:400,700" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link href="min.style.css" type="text/css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script src="/js/index.min.js" type="text/javascript"></script>
 
 </head>
 <body>
-<section class="flex flex-col font-size-mobile font-size-desktop font-size-tablet">
+  <!-- <p id="why"> asdfasd </p> -->
+ <section class="flex flex-col font-size-mobile font-size-desktop font-size-tablet">
 
 <!-- TOP NAVIGATION BAR IS NEXT-->
 
@@ -28,7 +31,6 @@
         <img src="./images/aloha-logo.svg" class="image-logo">
         <div>
           <img src="./images/cart-icon.svg" class="image-shopping">
-          <!-- <p id="numItemsParagraph" class="text-white"></p> -->
         </div>
       </div>
 
@@ -62,15 +64,19 @@
 <!-- quick view and shopping cart are next -->
 <section id="load-qv" class="flex flex-align-items-center flex-just-center">
   <div id="quick-view" class="flex flex-col padding">
-    <div class="flex">
-      <p id="close-qv"></p>
-      <img id="image-qv">
-      <p id="price-qv"></p>
-      <p id="name-qv"></p>
-      <div id="button-qv"></div>
-    <!-- <button type="button" class="green-button text-white">click here</button> -->
+    <div class="flex flex-col">
+      <div><h2 id="close-qv">X</h2></div>
+      <div class="flex">
+        <img id="image-qv" height="200px" >
+        <div class="flex flex-col flex-grow">
+          <h2 id="name-qv" class="flex qv-title"></h2>
+          <p id="price-qv"></p>
+          <div id="button-qv"></div>
+        </div>
       </div>
-      <p class="text-top">About this very pretty paperweight</p>
+
+      </div>
+      <h2 class="text-top">About this very pretty paperweight</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin porta scelerisque. Duis placerat quam ut est auctor, ac posuere felis auctor. Maecenas congue ultrices ultrices. Proin in laoreet sem. Sed dictum lacinia urna pulvinar tincidunt. Aenean porta blandit interdum. Donec aliquam risus eu lorem vehicula dictum. Sed in quam urna. Proin vel quam sem. Integer eget sem non tortor blandit euismod varius nec felis. Nam scelerisque sem urna, eu vestibulum velit porttitor eu. Sed faucibus rhoncus ipsum, non faucibus erat faucibus et. Duis maximus dolor tortor, non mattis massa convallis ut.
       </p>
     </div>
@@ -78,12 +84,12 @@
 </section>
 <section id="load-cart" class="flex flex-align-items-center flex-just-center">
   <div id="yourCart" class="flex flex-col padding">
-    <p id="close-cart">Close</p>
-    <button type="button" id="checkout-button" class="green-button text-white align-self-flex-end padding">checkout</button>
-    <p id="empty-cart">empty cart</p>
+    <div class="flex flex-just-between"><h2 id="close-cart">X</h2><p id="empty-cart">empty cart</p></div>
+
     <h1 id="cart-title" class="padding text-align-center">Your Cart</h1>
     <div id="testing"></div>
-    <div>Your Total: $<span id="cart-total"></span><div>
+    <div class="flex flex-just-between padding"><h2>Your Total: $<span id="cart-total"></span></h2> <button type="button" id="checkout-button" class=" text-white align-self-flex-end padding">checkout</button>
+    </div>
   </div>
 </section>
 
@@ -104,7 +110,7 @@
 
   <section class="border-gray flex flex-col flex-align-center padding" id="about">
     <div class="flex flex-just-center   padding-bottom">
-      <p class="text-top text-align-center text-black font-spacing">Have you ever wanted to <b>buy something?</b></p>
+      <h2 class="text-top text-align-center text-black font-spacing">Have you ever wanted to <b>buy something?</b></h2>
     </div>
     <p class="text-blurb text-align-center text-black  ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris massa ligula, blandit vitae tellus venenatis, varius interdum leo. Sed viverra, tortor vitae sodales fringilla, ligula tellus elementum odio, egestas auctor nisi tortor et orci. Etiam dapibus turpis ut efficitur posuere. Phasellus consequat enim nisi, nec maximus purus hendrerit ornare.
     </p>
@@ -149,8 +155,8 @@
 
 <section id="carouselSection" class="flex flex-col flex-align-center padding">
   <div class="flex flex-col text-align-center flex-just-center padding-bottom" id="featured">
-    <p class="text-top text-black">You like stuff?</p>
-    <p class="text-sub text-black">We got stuff.</p>
+    <h2 class="text-top text-black">You like stuff?</h2>
+    <h3 class="text-sub text-black">We got stuff.</h3>
   </div>
 
 
@@ -161,7 +167,7 @@
 
   <section class="flex flex-col background-image-updates padding" id="updates">
    <div class="flex flex-col text-align-center flex-just-center   padding-bottom">
-      <p class="text-top text-white  ">Want to get constant updates?</p>
+      <h2 class="text-top text-white  ">Want to get constant updates?</h2>
       <p class="text-sub text-white  "> Give us your email and we won't stop emailing you</p>
    </div>
 

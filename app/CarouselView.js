@@ -36,7 +36,7 @@ export default class CarouselView{
         //calls function to render sale price of current product:
         let titlePrice = this.createProductPrice(currentProduct);
         //appends manufacturer to cell box div (div of content within carousel cell):
-        cellBox.appendChild(titleManuf);
+        // cellBox.appendChild(titleManuf);
         cellBox.appendChild(document.createElement("br"));
         cellBox.appendChild(titleName);
         cellBox.appendChild(document.createElement("br"));
@@ -78,12 +78,13 @@ export default class CarouselView{
     createTitleName(currentProduct){
         let newName = document.createElement("p");
         newName.style.color = "#0000ff";
+        newName.setAttribute("class", "width-80 margin-auto");
         let newNameContent = document.createTextNode(`${currentProduct["name"]}`);
         newName.appendChild(newNameContent);
         return newName;
     }
     createManuf(currentProduct){
-        let newManuf = document.createElement("h2");
+        let newManuf = document.createElement("h3");
         newManuf.style.color = "#0000ff";
         let newManufContent = document.createTextNode(`${currentProduct["manufacturer"]}`);
         newManuf.appendChild(newManufContent);
@@ -92,6 +93,7 @@ export default class CarouselView{
     createCartButton(currentProduct){
         //creates button element.  Button adds current item to cart:
         let newCartButton = document.createElement("button");
+        newCartButton.setAttribute("class","cart-button");
         newCartButton.setAttribute("data-sku",`${currentProduct["sku"]}`);
         newCartButton.setAttribute("type","button");
         newCartButton.setAttribute("Id",`${currentProduct["sku"]}`);
@@ -105,6 +107,8 @@ export default class CarouselView{
     quickViewButton(currentProduct){
         //button opens current product's quick view:
         let newQVButton = document.createElement("button");
+        newQVButton.setAttribute("class","qv-button");
+
         newQVButton.setAttribute("data-sku",`${currentProduct["sku"]}`);
         newQVButton.setAttribute("type","button");
         newQVButton.setAttribute("Id",`${currentProduct["sku"]}`);

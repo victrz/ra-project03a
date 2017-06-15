@@ -86,7 +86,7 @@ module.exports = {
             {
             test: /\.(eot|svg|ttf|woff|woff2)$/,
             include : PATHS.fonts,
-            loader: `file?name=/fonts/[name].[ext]`
+            loader: `file-loader?name=/fonts/[name].[ext]`
         },
         { test: /\.(png|jpg|svg|jpeg|gif)$/, loader: "url-loader?limit=100000" }
         ]

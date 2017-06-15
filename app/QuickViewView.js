@@ -14,6 +14,7 @@ export default class QuickViewView{
               let itemPrice = allTheProducts[y].salePrice;
               let itemName = allTheProducts[y].name;
               let itemManufacturer = allTheProducts[y].manufacturer;
+
               this.createQV(itemSku, itemImage, itemPrice, itemName, itemManufacturer);
             }
     };
@@ -22,7 +23,7 @@ export default class QuickViewView{
   createQV(sku, image, price, name, manufacturer){
       document.getElementById("load-qv").style.display = "block";
       document.getElementById("quick-view").style.display= "block";
-      let closeQV = document.getElementById("close-qv").appendChild(document.createTextNode("close window"));
+      // let closeQV = document.getElementById("close-qv").appendChild(document.createTextNode("close window"));
       document.getElementById("close-qv").addEventListener("click",this.onClickCloseQV,false);
       let imageQV = document.getElementById("image-qv").setAttribute("src", image);
       let priceQV = document.getElementById("price-qv").appendChild(document.createTextNode(price));
@@ -34,8 +35,8 @@ export default class QuickViewView{
       let newCartButton = document.createElement("button");
       newCartButton.setAttribute("data-sku",sku);
       newCartButton.setAttribute("type","button");
-      newCartButton.setAttribute("class","green-button");
-      newCartButton.setAttribute("class","text-white");
+      newCartButton.setAttribute("class","cart-button");
+      // newCartButton.setAttribute("class","text-white");
       newCartButton.appendChild(document.createTextNode("Add To Cart"));
       //binds the button so the data-sku SKU can be used to add SKU to cart:
       newCartButton.addEventListener("click",this.onClickAddToCart.bind(this),false);
@@ -43,7 +44,13 @@ export default class QuickViewView{
   }
     onClickCloseQV(e){
       document.getElementById("load-qv").style.display = "none";
+      document.getElementById("close-qv").innerHTML="";
+      document.getElementById("image-qv").innerHTML="";
+      document.getElementById("price-qv").innerHTML="";
+      document.getElementById("name-qv").innerHTML="";
+      document.getElementById("button-qv").innerHTML="";
       document.getElementById("quick-view").style.display= "none";
+
     }
     onClickAddToCart(e){
         let currentSku = e.target.getAttribute("data-sku");
