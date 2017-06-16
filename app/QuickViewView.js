@@ -44,9 +44,9 @@ export default class QuickViewView{
   }
     onClickCloseQV(e){
       document.getElementById("load-qv").style.display = "none";
-      document.getElementById("close-qv").innerHTML="";
+      // document.getElementById("close-qv").innerHTML="";
       document.getElementById("image-qv").innerHTML="";
-      document.getElementById("price-qv").innerHTML="";
+      document.getElementById("price-qv").innerHTML="$";
       document.getElementById("name-qv").innerHTML="";
       document.getElementById("button-qv").innerHTML="";
       document.getElementById("quick-view").style.display= "none";

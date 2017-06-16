@@ -70,14 +70,14 @@ export default class CarouselView{
     }
     createProductPrice(currentProduct){
         let newPrice= document.createElement("h3");
-        newPrice.style.color = "#0000ff";
+        newPrice.style.color = "#30343D";
         let newPriceContent = document.createTextNode(`$ ${currentProduct["salePrice"]}`);
         newPrice.appendChild(newPriceContent);
         return newPrice;
     }
     createTitleName(currentProduct){
         let newName = document.createElement("p");
-        newName.style.color = "#0000ff";
+        newName.style.color = "#30343D";
         newName.setAttribute("class", "width-80 margin-auto");
         let newNameContent = document.createTextNode(`${currentProduct["name"]}`);
         newName.appendChild(newNameContent);

@@ -36,7 +36,7 @@ export default class App {
       console.log("here");
       console.log(cartView);
       let passToCartView = {products: products.productList, cv: cartView};
-      document.getElementById("numItemsParagraph").addEventListener("click", cartView.onClickOpenCart.bind(passToCartView), false);
+      document.getElementById("shopping-basket").addEventListener("click", cartView.onClickOpenCart.bind(passToCartView), false);
 
 
     }

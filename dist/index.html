@@ -28,36 +28,36 @@
   <header class="flex flex-col-mobile">
 
     <div class="flex flex-just-between bottom-border-gray top-nav display-none-tablet display-none-desktop">
-        <img src="./images/aloha-logo.svg" class="image-logo">
+        <img src="./images/LOGO.png" class="image-logo">
         <div>
           <img src="./images/cart-icon.svg" class="image-shopping">
         </div>
       </div>
 
     <ul class="flex flex-just-around bottom-border-gray space-top-nav padding display-none-tablet display-none-desktop">
-        <li><a class="text-top-nav" href="#about"> about </a></li>
-        <li><a class="text-top-nav" href="#shop"> shop </a></li>
-        <li><a class="text-top-nav" href="#featured"> featured </a></li>
-        <li><a class="text-top-nav" href="#updates"> updates </a></li>
+        <li><a class="text-top-nav medium-font p-font" href="#about"> about </a></li>
+        <li><a class="text-top-nav medium-font p-font" href="#shop"> shop </a></li>
+        <li><a class="text-top-nav medium-font p-font" href="#featured"> featured </a></li>
+        <li><a class="text-top-nav medium-font p-font" href="#updates"> updates </a></li>
     </ul>
 
       </div>
 
       <div class="flex flex-just-between top-nav display-none-mobile">
-          <img src="./images/aloha-logo.svg" class="image-logo ">
+          <img src="./images/LOGO.png" class="image-logo ">
 
           <div class="flex flex-just-center">
               <ul class="flex flex-just-between navigation-desktop navigation-tablet">
-                <li><a class="text-top-nav display-block" href="#about"> about </a></li>
-                <li><a class="text-top-nav display-block" href="#shop"> shop </a></li>
-                <li><a class="text-top-nav display-block" href="#featured"> featured </a></li>
-                <li><a class="text-top-nav display-block" href="#updates"> updates </a></li>
+                <li><a class="text-top-nav medium-font p-font display-block" href="#about"> about </a></li>
+                <li><a class="text-top-nav medium-font p-font display-block" href="#shop"> shop </a></li>
+                <li><a class="text-top-nav medium-font p-font display-block" href="#featured"> featured </a></li>
+                <li><a class="text-top-nav medium-font p-font display-block" href="#updates"> updates </a></li>
               </ul>
           </div>
 
-          <div id="shopping-basket" class="flex flex-just-center">
+          <div id="shopping-basket" class="flex flex-just-center" >
             <p id="numItemsParagraph" class="text-white"></p>
-            <img src="./images/cart-icon.svg" class="image-shopping">
+            <!-- <img src="./images/cart-icon.svg" class="image-shopping"> -->
           </div>
         </div>
   </header>
@@ -66,20 +66,26 @@
   <div id="quick-view" class="flex flex-col padding">
     <div class="flex flex-col">
       <div><h2 id="close-qv">X</h2></div>
-      <div class="flex">
+      <div class="flex flex-align-items-center margin-b-20">
         <img id="image-qv" height="200px" >
-        <div class="flex flex-col flex-grow">
-          <h2 id="name-qv" class="flex qv-title"></h2>
-          <p id="price-qv"></p>
+        <h2 id="name-qv" class="flex qv-title"></h2>
+      </div>
+      <div class="bottom-border-gray "></div>
+      <div class="flex flex-col flex-grow ">
+        <div class="flex flex-just-around flex-align-items-center margin-10">
+          <p id="price-qv">$</p>
           <div id="button-qv"></div>
         </div>
+        <div class="bottom-border-gray"></div>
+        <div class="margin-10">
+          <h2 class="text-top padding-small">About this very pretty paperweight</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin porta scelerisque. Duis placerat quam ut est auctor, ac posuere felis auctor. Maecenas congue ultrices ultrices. Proin in laoreet sem. Sed dictum lacinia urna pulvinar tincidunt. Aenean porta blandit interdum. Donec aliquam risus eu lorem vehicula dictum. Sed in quam urna. Proin vel quam sem. Integer eget sem non tortor blandit euismod varius nec felis. Nam scelerisque sem urna, eu vestibulum velit porttitor eu. Sed faucibus rhoncus ipsum, non faucibus erat faucibus et. Duis maximus dolor tortor, non mattis massa convallis ut.
+          </p>
+        </div>
       </div>
-
-      </div>
-      <h2 class="text-top">About this very pretty paperweight</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin porta scelerisque. Duis placerat quam ut est auctor, ac posuere felis auctor. Maecenas congue ultrices ultrices. Proin in laoreet sem. Sed dictum lacinia urna pulvinar tincidunt. Aenean porta blandit interdum. Donec aliquam risus eu lorem vehicula dictum. Sed in quam urna. Proin vel quam sem. Integer eget sem non tortor blandit euismod varius nec felis. Nam scelerisque sem urna, eu vestibulum velit porttitor eu. Sed faucibus rhoncus ipsum, non faucibus erat faucibus et. Duis maximus dolor tortor, non mattis massa convallis ut.
-      </p>
     </div>
+    </div>
+
 
 </section>
 <section id="load-cart" class="flex flex-align-items-center flex-just-center">
@@ -101,8 +107,8 @@
 
   <section class="background-image-season flex flex-col z-index flex-align-center flex-just-center">
     <div class="width-60 flex-col padding align-self-center">
-      <div class="text-top text-white display-block"><p>want to buy</p><p><b>cool shit from best buy?</b></p></div>
-      <a href="#carouselSection"><button type="button" class="white-button text-white">click here</button></a>
+      <div class="text-top text-white display-block font-shadow" ><p>want to buy</p><p class="large-font"><b>cool shit from best buy?</b></p></div>
+      <a href="#carouselSection"><button type="button" class="white-button p-font text-white">click here</button></a>
     </div>
   </section>
 
@@ -121,14 +127,14 @@
 
 <section class="flex row-width-100 flex-wrap-mobile flex-col-mobile">
         <div class="hover flex flex-col flex-just-center  flex-5-desktop flex-5-tablet large-box image-cat-cell box-margin text-align-center">
-          <p class="text-white display-block font-size">CELL PHONES</p>
+          <p class="text-white display-block medium-font font-shadow">CELL PHONES</p>
         </div>
         <div class="flex  flex-5-desktop flex-5-tablet">
             <div class="hover small-box image-cat-desktop box-margin text-align-center flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-2-mobile">
-              <p class="text-white display-block font-size">DESKTOPS</p>
+              <p class="text-white display-block medium-font font-shadow">DESKTOPS</p>
             </div>
             <div class="hover small-box image-cat-homeaudio box-margin text-align-center flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-2-mobile">
-              <p class="text-white display-block font-size">HOME AUDIO</p>
+              <p class="text-white display-block medium-font font-shadow">HOME AUDIO</p>
             </div>
         </div>
 </section>
@@ -136,14 +142,14 @@
 
         <div class=" flex  flex-5-desktop flex-5-tablet flex-1-mobile ">
             <div class="hover image-cat-tablet small-box cat-tablet text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-1-mobile">
-              <p class="text-white display-block font-size">TABLETS</p>
+              <p class="text-white display-block medium-font font-shadow">TABLETS</p>
             </div>
             <div class="hover image-cat-tv small-box text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-1-mobile">
-              <p class="text-white display-block font-size">4K TVs</p>
+              <p class="text-white display-block medium-font font-shadow">4K TVs</p>
             </div>
         </div>
-        <div class="hover large-box image-cat-laptop text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-grow-1-mobile  ">
-          <p class="text-white display-block font-size">LAPTOPS/ULTRABOOKS</p>
+        <div class="hover-secondary large-box image-cat-laptop text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-grow-1-mobile  ">
+          <p class="text-white display-block medium-font font-shadow">LAPTOPS/ULTRABOOKS</p>
         </div>
 </section>
 
@@ -167,8 +173,8 @@
 
   <section class="flex flex-col background-image-updates padding" id="updates">
    <div class="flex flex-col text-align-center flex-just-center   padding-bottom">
-      <h2 class="text-top text-white  ">Want to get constant updates?</h2>
-      <p class="text-sub text-white  "> Give us your email and we won't stop emailing you</p>
+      <h2 class="text-top text-white font-shadow margin-b-20" > Want to get constant updates?</h2>
+      <p class="text-sub text-white font-shadow "> Give us your email and we won't stop emailing you</p>
    </div>
 
 <!-- EMAIL FORM IS NEXT-->
