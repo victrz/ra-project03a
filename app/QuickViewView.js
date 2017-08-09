@@ -23,7 +23,6 @@ export default class QuickViewView{
   createQV(sku, image, price, name, manufacturer){
       document.getElementById("load-qv").style.display = "block";
       document.getElementById("quick-view").style.display= "block";
-      // let closeQV = document.getElementById("close-qv").appendChild(document.createTextNode("close window"));
       document.getElementById("close-qv").addEventListener("click",this.onClickCloseQV,false);
       let imageQV = document.getElementById("image-qv").setAttribute("src", image);
       let priceQV = document.getElementById("price-qv").appendChild(document.createTextNode(price));
@@ -36,7 +35,6 @@ export default class QuickViewView{
       newCartButton.setAttribute("data-sku",sku);
       newCartButton.setAttribute("type","button");
       newCartButton.setAttribute("class","cart-button");
-      // newCartButton.setAttribute("class","text-white");
       newCartButton.appendChild(document.createTextNode("Add To Cart"));
       //binds the button so the data-sku SKU can be used to add SKU to cart:
       newCartButton.addEventListener("click",this.onClickAddToCart.bind(this),false);
@@ -44,7 +42,6 @@ export default class QuickViewView{
   }
     onClickCloseQV(e){
       document.getElementById("load-qv").style.display = "none";
-      // document.getElementById("close-qv").innerHTML="";
       document.getElementById("image-qv").innerHTML="";
       document.getElementById("price-qv").innerHTML="$";
       document.getElementById("name-qv").innerHTML="";

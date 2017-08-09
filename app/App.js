@@ -7,6 +7,8 @@ import Cart from './Cart';
 import Product from './Product';
 import QuickViewView from './QuickViewView';
 import QuickView from './QuickView';
+import Checkout from './Checkout';
+
 
 export default class App {
   constructor(){
@@ -19,23 +21,21 @@ export default class App {
       this.carousel = new Carousel(this.cart, this.quickView)
       this.carouselView = new CarouselView(this.carousel);
       this.bbService = new BestBuyService();
+      this.checkout = new Checkout();
     }
     init(){
       this.bbService.init(this);
-      console.log("app init");
     }
     iHaveData(theData){
       this.allProducts = theData;
       this.carouselView.init(this.allProducts.productList);
-      this.eventListener(this.allProducts, this.cartView);
+      this.cartCounter(this.allProducts, this.cartView,this);
 
     }
-    eventListener(products, cartView){
-      console.log("app eventListener");
-      console.log(products);
-      console.log("here");
-      console.log(cartView);
-      let passToCartView = {products: products.productList, cv: cartView};
+    cartCounter(products, cartView, app){
+      //pass this object to cartView by binding it to the event handling function:
+      let passToCartView = {products: products.productList, cv: cartView, app: app};
+      //on clicking the shopping cart icon div, open cart view:
       document.getElementById("shopping-basket").addEventListener("click", cartView.onClickOpenCart.bind(passToCartView), false);
 
 

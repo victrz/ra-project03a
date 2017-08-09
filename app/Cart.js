@@ -6,29 +6,19 @@ constructor(app){
   // this.app.cartView;
   this.app = app;
   this.ss = window.sessionStorage;
-
-
 }
 
-// let something = function () {
-//   let passToCartView = {products: this.app.allProducts.productList, cv: this.app.cartView};
-//
-//     document.getElementById("numItemsParagraph").addEventListener("click", this.app.cartView.onClickOpenCart.bind(passToCartView), false);
-// }();
 addItemToCart(sku,qty = 1){
-  //this.ss.setItem(sku,qty.toString());
-
   let sessionLength = this.ss.length;
   if(sessionLength<=0){
       this.ss.setItem(sku,qty.toString());
-      this.updateLittleCartIcon(1, "run");
+      this.updateLittleCartIcon(1);
       return ;
   }
   let newTotalQty = 0;
   let match = 0;
   for (let key in this.ss){
       if (key == sku ){
-        //^sku.toString()
           // get current quantity (its a string)
           // convert it to a number;
           let oldQty = this.ss.getItem(key);
@@ -41,14 +31,11 @@ addItemToCart(sku,qty = 1){
 
           for (let i=0; i< this.ss.length; i++){
               let skuKey = this.ss.key(i);
-              //console.log(skuKey);
               let qtyValue = this.ss.getItem(skuKey);
-              // sumOfItems += parseInt(qtyValue);
               newTotalQty+= parseInt(qtyValue);
-              // this.updateLittleCartIcon(newTotalQty);
 
           }
-          this.updateLittleCartIcon(newTotalQty,"run");
+          this.updateLittleCartIcon(newTotalQty);
           return;
       }
   }
@@ -59,33 +46,17 @@ addItemToCart(sku,qty = 1){
 
   }
   // sum up all the current quantities to get new total
-  // let sumOfItems = 0;
   for (let i=0; i< this.ss.length; i++){
       let skuKey = this.ss.key(i);
-      //console.log(skuKey);
       let qtyValue = this.ss.getItem(skuKey);
-      // sumOfItems += parseInt(qtyValue);
       newTotalQty+= parseInt(qtyValue);
   }
   this.updateLittleCartIcon(newTotalQty);
 }
-  updateLittleCartIcon(qty,callback = "null"){
-    console.log("new total qty cart.js =");
-    console.log(qty);
-    //pass this object to cartView by binding it to the event handling function:
-  //  let passToCartView = {products: this.app.allProducts.productList, cv: this.app.cartView};
+  updateLittleCartIcon(qty){
     //updates the quantity shown in the shopping cart icon's counter:
     document.getElementById("numItemsParagraph").style.display = 'block';
     document.getElementById("numItemsParagraph").innerHTML = qty;
-    // $('#numItemsParagraph').click(this.app.cartView.onClickOpenCart());
-    // console.log(callback);
-    // if (callback != "null") {
-    //   console.log("call back is not null");
-    // //  document.getElementById("numItemsParagraph").addEventListener("click", this.app.cartView.onClickOpenCart.bind(passToCartView), false);
-    // }
-
-    //on clicking the shopping cart icon's counter, open cart view:
-
   }
 
 }

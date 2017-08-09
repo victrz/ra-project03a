@@ -14,7 +14,7 @@ export default class BestBuyService {
   }
   processRequest(e) {
     if (e.target.readyState == 4 && e.target.status == 200){
-      var result = JSON.parse(e.target.responseText);
+      let result = JSON.parse(e.target.responseText);
       this.app.allProducts = this.allProducts = this.generateData(result.products);
       this.app.iHaveData(this.app.allProducts);
     }

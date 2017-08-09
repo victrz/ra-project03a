@@ -8,9 +8,6 @@
     <meta author="Victoria Trzcianowski"/>
     <meta description="best buy api shopping site"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <!-- <link href="https://fonts.googleapis.com/css?family=Miriam+Libre:400,700" rel="stylesheet"> -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link href="min.style.css" type="text/css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -27,26 +24,26 @@
 
   <header class="flex flex-col-mobile">
 
-    <div class="flex flex-just-between bottom-border-gray top-nav display-none-tablet display-none-desktop">
+    <!-- <div class="flex flex-just-between bottom-border-line top-nav h-10vh display-none-tablet display-none-desktop">
         <img src="./images/LOGO.png" class="image-logo">
-        <div>
-          <img src="./images/cart-icon.svg" class="image-shopping">
+        <div id="shopping-basket" class="h-10vh flex flex-just-center" >
+          <p id="numItemsParagraph" class="text-light"></p>
         </div>
       </div>
 
-    <ul class="flex flex-just-around bottom-border-gray space-top-nav padding display-none-tablet display-none-desktop">
+    <ul class="flex flex-just-around bottom-border-line space-top-nav padding display-none-tablet display-none-desktop">
         <li><a class="text-top-nav medium-font p-font" href="#about"> about </a></li>
         <li><a class="text-top-nav medium-font p-font" href="#shop"> shop </a></li>
         <li><a class="text-top-nav medium-font p-font" href="#featured"> featured </a></li>
         <li><a class="text-top-nav medium-font p-font" href="#updates"> updates </a></li>
     </ul>
 
-      </div>
+      </div> -->
 
-      <div class="flex flex-just-between top-nav display-none-mobile">
-          <img src="./images/LOGO.png" class="image-logo ">
+      <div class="flex flex-just-between top-nav h-10vh display-none-mobile">
+          <img src="./images/LOGO.png" class="image-logo h-10vh">
 
-          <div class="flex flex-just-center">
+          <div class="flex flex-just-center h-10vh">
               <ul class="flex flex-just-between navigation-desktop navigation-tablet">
                 <li><a class="text-top-nav medium-font p-font display-block" href="#about"> about </a></li>
                 <li><a class="text-top-nav medium-font p-font display-block" href="#shop"> shop </a></li>
@@ -55,9 +52,8 @@
               </ul>
           </div>
 
-          <div id="shopping-basket" class="flex flex-just-center" >
-            <p id="numItemsParagraph" class="text-white"></p>
-            <!-- <img src="./images/cart-icon.svg" class="image-shopping"> -->
+          <div id="shopping-basket" class="h-10vh flex flex-just-center" >
+            <p id="numItemsParagraph" class="text-light"></p>
           </div>
         </div>
   </header>
@@ -70,13 +66,13 @@
         <img id="image-qv" height="200px" >
         <h2 id="name-qv" class="flex qv-title"></h2>
       </div>
-      <div class="bottom-border-gray "></div>
+      <div class="bottom-border-line "></div>
       <div class="flex flex-col flex-grow ">
         <div class="flex flex-just-around flex-align-items-center margin-10">
           <p id="price-qv">$</p>
           <div id="button-qv"></div>
         </div>
-        <div class="bottom-border-gray"></div>
+        <div class="bottom-border-line"></div>
         <div class="margin-10">
           <h2 class="text-top padding-small">About this very pretty paperweight</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin porta scelerisque. Duis placerat quam ut est auctor, ac posuere felis auctor. Maecenas congue ultrices ultrices. Proin in laoreet sem. Sed dictum lacinia urna pulvinar tincidunt. Aenean porta blandit interdum. Donec aliquam risus eu lorem vehicula dictum. Sed in quam urna. Proin vel quam sem. Integer eget sem non tortor blandit euismod varius nec felis. Nam scelerisque sem urna, eu vestibulum velit porttitor eu. Sed faucibus rhoncus ipsum, non faucibus erat faucibus et. Duis maximus dolor tortor, non mattis massa convallis ut.
@@ -93,11 +89,37 @@
     <div class="flex flex-just-between"><h2 id="close-cart">X</h2><p id="empty-cart">empty cart</p></div>
 
     <h1 id="cart-title" class="padding text-align-center">Your Cart</h1>
-    <div id="testing"></div>
-    <div class="flex flex-just-between padding"><h2>Your Total: $<span id="cart-total"></span></h2> <button type="button" id="checkout-button" class=" text-white align-self-flex-end padding">checkout</button>
+    <div id="testing" class="margin-auto width-90 padding-bottom"></div>
+    <div class="flex flex-just-between width-90 margin-auto padding-bottom">
+      <h2>Your Total: $<span id="cart-total">0</span></h2>
+      <button type="button" id="checkout-button" class="button-border text-light align-self-flex-end padding">checkout</button>
+    </div>
+    <div id="checkout-section" class="width-90 margin-auto padding-bottom">
+      <script src="https://js.stripe.com/v3/"></script>
+      <form action="/charge" method="post" id="payment-form" class="flex flex-col">
+        <div class="form-row">
+          <label for="card-element">
+            Credit or debit card
+          </label>
+          <div id="card-element">
+            <!-- a Stripe Element will be inserted here. -->
+          </div>
+
+          <!-- Used to display form errors -->
+          <div id="card-errors" role="alert"></div>
+        </div>
+        <div class="flex flex-just-end">
+        <button >Submit Payment</button>
+      </div>
+      </form>
+    </div>
+    <div id="checkout-success" class="width-90 margin-auto padding-bottom flex-grow">
+      <h2 class="text-align-center">Thank You!</h2>
     </div>
   </div>
+
 </section>
+
 
 <!-- start of content below header nav -->
 
@@ -105,10 +127,10 @@
 
 <!-- SEASON BANNER IMAGE IS NEXT -->
 
-  <section class="background-image-season flex flex-col z-index flex-align-center flex-just-center">
+  <section class="background-image-season flex flex-col z-index flex-align-center flex-just-center overflow-hidden">
     <div class="width-60 flex-col padding align-self-center">
-      <div class="text-top text-white display-block font-shadow" ><p>want to buy</p><p class="large-font"><b>cool shit from best buy?</b></p></div>
-      <a href="#carouselSection"><button type="button" class="white-button p-font text-white">click here</button></a>
+      <div class="text-top text-light display-block font-shadow"><p>want to buy</p><p class="large-font"><b>cool $#!& from best buy?</b></p></div>
+      <a href="#carouselSection"><button type="button" class="white-button p-font text-light">click here</button></a>
     </div>
   </section>
 
@@ -116,9 +138,9 @@
 
   <section class="border-gray flex flex-col flex-align-center padding" id="about">
     <div class="flex flex-just-center   padding-bottom">
-      <h2 class="text-top text-align-center text-black font-spacing">Have you ever wanted to <b>buy something?</b></h2>
+      <h2 class="text-top text-align-center text-dark font-spacing">Have you ever wanted to <b>buy something?</b></h2>
     </div>
-    <p class="text-blurb text-align-center text-black  ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris massa ligula, blandit vitae tellus venenatis, varius interdum leo. Sed viverra, tortor vitae sodales fringilla, ligula tellus elementum odio, egestas auctor nisi tortor et orci. Etiam dapibus turpis ut efficitur posuere. Phasellus consequat enim nisi, nec maximus purus hendrerit ornare.
+    <p class="text-blurb text-align-center text-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris massa ligula, blandit vitae tellus venenatis, varius interdum leo. Sed viverra, tortor vitae sodales fringilla, ligula tellus elementum odio, egestas auctor nisi tortor et orci. Etiam dapibus turpis ut efficitur posuere. Phasellus consequat enim nisi, nec maximus purus hendrerit ornare.
     </p>
   </section>
 <!--  SHOPPING GRID IS NEXT -->
@@ -127,14 +149,14 @@
 
 <section class="flex row-width-100 flex-wrap-mobile flex-col-mobile">
         <div class="hover flex flex-col flex-just-center  flex-5-desktop flex-5-tablet large-box image-cat-cell box-margin text-align-center">
-          <p class="text-white display-block medium-font font-shadow">CELL PHONES</p>
+          <p class="text-light display-block medium-font font-shadow">CELL PHONES</p>
         </div>
         <div class="flex  flex-5-desktop flex-5-tablet">
             <div class="hover small-box image-cat-desktop box-margin text-align-center flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-2-mobile">
-              <p class="text-white display-block medium-font font-shadow">DESKTOPS</p>
+              <p class="text-light display-block medium-font font-shadow">DESKTOPS</p>
             </div>
             <div class="hover small-box image-cat-homeaudio box-margin text-align-center flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-2-mobile">
-              <p class="text-white display-block medium-font font-shadow">HOME AUDIO</p>
+              <p class="text-light display-block medium-font font-shadow">HOME AUDIO</p>
             </div>
         </div>
 </section>
@@ -142,14 +164,14 @@
 
         <div class=" flex  flex-5-desktop flex-5-tablet flex-1-mobile ">
             <div class="hover image-cat-tablet small-box cat-tablet text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-1-mobile">
-              <p class="text-white display-block medium-font font-shadow">TABLETS</p>
+              <p class="text-light display-block medium-font font-shadow">TABLETS</p>
             </div>
             <div class="hover image-cat-tv small-box text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-1-mobile">
-              <p class="text-white display-block medium-font font-shadow">4K TVs</p>
+              <p class="text-light display-block medium-font font-shadow">4K TVs</p>
             </div>
         </div>
         <div class="hover-secondary large-box image-cat-laptop text-align-center box-margin flex flex-col flex-just-center  flex-5-desktop flex-5-tablet flex-grow-1-mobile  ">
-          <p class="text-white display-block medium-font font-shadow">LAPTOPS/ULTRABOOKS</p>
+          <p class="text-light display-block medium-font font-shadow">LAPTOPS/ULTRABOOKS</p>
         </div>
 </section>
 
@@ -161,8 +183,8 @@
 
 <section id="carouselSection" class="flex flex-col flex-align-center padding">
   <div class="flex flex-col text-align-center flex-just-center padding-bottom" id="featured">
-    <h2 class="text-top text-black"><b>You like stuff?</b> We got stuff.</h2>
-    <!-- <h3 class="text-sub text-black">We got stuff.</h3> -->
+    <h2 class="text-top text-dark"><b>You like stuff?</b> We got stuff.</h2>
+    <!-- <h3 class="text-sub text-dark">We got stuff.</h3> -->
   </div>
 
 
@@ -173,30 +195,30 @@
 
   <section class="flex flex-col background-image-updates padding" id="updates">
    <div class="flex flex-col text-align-center flex-just-center   padding-bottom">
-      <h2 class="text-top text-white font-shadow margin-b-20" > Want to get constant updates?</h2>
-      <p class="text-sub text-white font-shadow "> Give us your email and we won't stop emailing you</p>
+      <h2 class="text-top text-light font-shadow margin-b-20" > Want to get constant updates?</h2>
+      <p class="text-sub text-light font-shadow "> Give us your email and we won't stop emailing you</p>
    </div>
 
 <!-- EMAIL FORM IS NEXT-->
 
     <form name="form1" class="flex flex-just-between email-form">
-        <input id="email-input"type="text" name="yourEmail" value="Your Email" class="email text-email text-gray email-form">
-        <input type="submit" value="Subscribe" onclick="ValidateEmail(document.form1.yourEmail)" class="green-button text-white text-button email-form">
+        <input id="email-input"type="text" name="yourEmail" value="Enter Your Email" class="email text-email text-gray email-form">
+        <input type="submit" value="Subscribe" onclick="ValidateEmail(document.form1.yourEmail)" class="green-button text-light text-button email-form">
     </form>
   </section>
 
 <!-- FOOTER SECTION IS NEXT-->
 
-  <footer class="border-white padding flex flex-col-mobile flex-row-tablet flex-just-center-mobile">
+  <footer class="border-light padding flex flex-col-mobile flex-row-tablet flex-just-center-mobile">
 
     <section class="text-footer width50-tablet flex-grow-tablet">
 
-      <p class="text-white text-footer text-align-center-mobile padding-bottom">c 2016 Aloha Apparel Co.
+      <p id="copyright" class="text-light text-footer text-align-center-mobile padding-bottom"> 2016 $#!& Electronics Co.
       <br>Powered by HTML and CSS.</br></p>
 
-      <p class="text-white text-footer text-align-center-mobile padding-bottom">604-604-6040. info@alohaapparel.com</p>
+      <p class="text-light text-footer text-align-center-mobile padding-bottom">604-604-6040. info@shhhelectronics.com</p>
 
-      <p class="text-white text-footer text-align-center-mobile text-gray padding-bottom">1490 W Broadway
+      <p class="text-light text-footer text-align-center-mobile text-gray padding-bottom">1490 W Broadway
       Vancouver, BC., Canada
       </p>
     </section>
@@ -213,13 +235,12 @@
         </div>
 
         <div class="display-none-mobile social-names-width">
-          <p class="icon-padding text-white text-footer">facebook</p>
-          <p class="icon-padding text-white text-footer">twitter</p>
-          <p class="icon-padding text-white text-footer">instagram</p>
-          <p class="icon-padding text-white text-footer">pinterest</p>
-          <p class="icon-padding text-white text-footer">google+</p>
+          <p class="icon-padding text-light text-footer">facebook</p>
+          <p class="icon-padding text-light text-footer">twitter</p>
+          <p class="icon-padding text-light text-footer">instagram</p>
+          <p class="icon-padding text-light text-footer">pinterest</p>
+          <p class="icon-padding text-light text-footer">google+</p>
         </div>
-        <!--names for desktop in div, col-->
       </section>
 
   </footer>

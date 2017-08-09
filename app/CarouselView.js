@@ -1,5 +1,4 @@
 import Carousel from './Carousel';
-//import Flickity from './Flickity';
 export default class CarouselView{
     constructor(carousel){
       this.carousel = carousel;
@@ -36,7 +35,6 @@ export default class CarouselView{
         //calls function to render sale price of current product:
         let titlePrice = this.createProductPrice(currentProduct);
         //appends manufacturer to cell box div (div of content within carousel cell):
-        // cellBox.appendChild(titleManuf);
         cellBox.appendChild(document.createElement("br"));
         cellBox.appendChild(titleName);
         cellBox.appendChild(document.createElement("br"));
@@ -113,7 +111,7 @@ export default class CarouselView{
         newQVButton.setAttribute("type","button");
         newQVButton.setAttribute("Id",`${currentProduct["sku"]}`);
         newQVButton.setAttribute("value",`${currentProduct["sku"]}`);
-        newQVButton.appendChild(document.createTextNode("Open QuickView"));
+        newQVButton.appendChild(document.createTextNode("View Item"));
         //bind this button, sends button to the event handling function
         //button has data-sku holding the sku of the current product:
         newQVButton.addEventListener("click",this.onClickOpenQV.bind(this),false);
@@ -136,8 +134,8 @@ export default class CarouselView{
       document.getElementById("carouselSection").appendChild(node);
 
 
-      var elem = document.querySelector('.main-carousel');
-      var flkty = new Flickity( elem, {
+      let elem = document.querySelector('.main-carousel');
+      let flkty = new Flickity( elem, {
         // options
         cellAlign: 'left',
         contain: true
